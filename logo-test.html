@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASUO Logo Test Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .test-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .success { color: green; }
+    .error { color: red; }
+    .info { color: blue; }
+    .logo-test {
+      border: 2px solid #ddd;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+    }
+    .logo-test img {
+      max-height: 50px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 ASUO Logo Test Page</h1>
+  <p>This page tests different logo path formats to help identify the correct one for your deployment.</p>
+
+  <div class="test-section">
+    <h2>Test 1: Absolute Path from Root</h2>
+    <div class="logo-test">
+      <p><strong>Path:</strong> <code>/2024-ASUO-Seal-BLK.png</code></p>
+      <img src="/2024-ASUO-Seal-BLK.png" alt="ASUO Logo" onload="showResult('test1', true)" onerror="showResult('test1', false)">
+      <div id="test1"></div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>Test 2: Relative Path with ./</h2>
+    <div class="logo-test">
+      <p><strong>Path:</strong> <code>./2024-ASUO-Seal-BLK.png</code></p>
+      <img src="./2024-ASUO-Seal-BLK.png" alt="ASUO Logo" onload="showResult('test2', true)" onerror="showResult('test2', false)">
+      <div id="test2"></div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>Test 3: Simple Relative Path</h2>
+    <div class="logo-test">
+      <p><strong>Path:</strong> <code>2024-ASUO-Seal-BLK.png</code></p>
+      <img src="2024-ASUO-Seal-BLK.png" alt="ASUO Logo" onload="showResult('test3', true)" onerror="showResult('test3', false)">
+      <div id="test3"></div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>Test 4: Current Directory Path</h2>
+    <div class="logo-test">
+      <p><strong>Path:</strong> <code>./2024-ASUO-Seal-BLK.png</code></p>
+      <img src="./2024-ASUO-Seal-BLK.png" alt="ASUO Logo" onload="showResult('test4', true)" onerror="showResult('test4', false)">
+      <div id="test4"></div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>📋 Test Results Summary</h2>
+    <div id="summary">
+      <p class="info">Loading tests...</p>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>🔧 Instructions</h2>
+    <ol>
+      <li>Deploy this test page along with your logo file</li>
+      <li>Open the test page on your deployed website</li>
+      <li>Check which logo paths work (show green "✅ Working")</li>
+      <li>Use the working path format for all your HTML files</li>
+    </ol>
+  </div>
+
+  <script>
+    function showResult(testId, success) {
+      const resultDiv = document.getElementById(testId);
+      if (success) {
+        resultDiv.innerHTML = '<p class="success">✅ Working - This path format works!</p>';
+      } else {
+        resultDiv.innerHTML = '<p class="error">❌ Not working - This path format failed</p>';
+      }
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const tests = ['test1', 'test2', 'test3', 'test4'];
+      const workingTests = tests.filter(testId => {
+        const result = document.getElementById(testId);
+        return result.innerHTML.includes('✅ Working');
+      });
+
+      const summaryDiv = document.getElementById('summary');
+      if (workingTests.length > 0) {
+        summaryDiv.innerHTML = `
+          <p class="success">✅ ${workingTests.length} path format(s) are working!</p>
+          <p>Use one of the working formats for your main website files.</p>
+        `;
+      } else {
+        summaryDiv.innerHTML = `
+          <p class="error">❌ No path formats are working</p>
+          <p>Check that the logo file is uploaded to your server in the correct location.</p>
+        `;
+      }
+    }
+
+    // Auto-update summary after a delay
+    setTimeout(updateSummary, 2000);
+  </script>
+</body>
+</html>

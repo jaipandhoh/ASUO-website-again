@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASUO Events Google Sheet Setup</title>
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f8fafc;
+      color: #1a202c;
+    }
+    .header {
+      background: linear-gradient(135deg, #0f4c3a 0%, #1a6b4f 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .section {
+      background: white;
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-left: 4px solid #0f4c3a;
+    }
+    .step {
+      background: #f0f9ff;
+      border-left: 4px solid #0ea5e9;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+    .step h3 {
+      color: #0ea5e9;
+      margin-top: 0;
+    }
+    .code-block {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+      margin: 10px 0;
+    }
+    .highlight {
+      background: #fef3c7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .success {
+      background: #dcfce7;
+      border-left: 4px solid #16a34a;
+      color: #166534;
+    }
+    .warning {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      color: #92400e;
+    }
+    .link-button {
+      display: inline-block;
+      background: #0f4c3a;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      margin: 10px 5px;
+      transition: background 0.3s ease;
+    }
+    .link-button:hover {
+      background: #1a6b4f;
+    }
+    .example-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    .example-table th,
+    .example-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px;
+      text-align: left;
+    }
+    .example-table th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: #0f4c3a;
+    }
+    .example-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🎉 ASUO Campus Events Google Sheet Setup</h1>
+    <p>Create and manage your events easily with Google Sheets integration</p>
+  </div>
+
+  <div class="section">
+    <h2>📋 Step 1: Create Your Google Sheet</h2>
+    <div class="step">
+      <h3>1.1 Create New Sheet</h3>
+      <p>Click the button below to create a new Google Sheet with the correct format:</p>
+      <a href="https://docs.google.com/spreadsheets/create" target="_blank" class="link-button">Create New Google Sheet</a>
+    </div>
+    
+    <div class="step">
+      <h3>1.2 Set Up Column Headers</h3>
+      <p>In the first row (Row 1), add these exact column headers:</p>
+      <div class="code-block">
+title,description,date,time,location,image
+      </div>
+      <p><strong>Important:</strong> Use these exact column names (lowercase, no spaces) for the website to work properly.</p>
+    </div>
+
+    <div class="step">
+      <h3>1.3 Add Sample Events</h3>
+      <p>Add some sample events to test the system. Here's the format:</p>
+      <table class="example-table">
+        <thead>
+          <tr>
+            <th>title</th>
+            <th>description</th>
+            <th>date</th>
+            <th>time</th>
+            <th>location</th>
+            <th>image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ASUO Senate Meeting</td>
+            <td>Weekly ASUO Senate meeting to discuss student government matters and campus issues.</td>
+            <td>2025-01-15</td>
+            <td>6:00 PM</td>
+            <td>EMU 145</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Student Organization Fair</td>
+            <td>Join us to learn about various student organizations and get involved on campus.</td>
+            <td>2025-01-20</td>
+            <td>11:00 AM - 2:00 PM</td>
+            <td>EMU Amphitheater</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>ASUO Town Hall</td>
+            <td>Open forum for students to voice concerns and ask questions to ASUO leadership.</td>
+            <td>2025-01-25</td>
+            <td>7:00 PM</td>
+            <td>EMU 145</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🔗 Step 2: Publish Your Sheet</h2>
+    <div class="step">
+      <h3>2.1 Publish to Web</h3>
+      <ol>
+        <li>In your Google Sheet, go to <strong>File → Share → Publish to web</strong></li>
+        <li>In the dialog box:
+          <ul>
+            <li><strong>Link type:</strong> Select "Web page"</li>
+            <li><strong>Sheet:</strong> Select "Sheet1" (or your events sheet)</li>
+            <li><strong>Format:</strong> Select "Comma-separated values (.csv)"</li>
+          </ul>
+        </li>
+        <li>Click <strong>"Publish"</strong></li>
+        <li>Copy the generated URL (it should look like: <code>https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/pub?output=csv</code>)</li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3>2.2 Share the Sheet</h3>
+      <p>Make sure your sheet is accessible:</p>
+      <ol>
+        <li>Click the <strong>"Share"</strong> button in the top-right corner</li>
+        <li>Set permissions to <strong>"Anyone with the link can view"</strong></li>
+        <li>Click <strong>"Done"</strong></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>⚙️ Step 3: Update Your Website</h2>
+    <div class="step">
+      <h3>3.1 Get Your Sheet ID</h3>
+      <p>From your published URL, copy the Sheet ID (the long string between <code>/d/</code> and <code>/pub</code>):</p>
+      <div class="code-block">
+https://docs.google.com/spreadsheets/d/<span class="highlight">YOUR_SHEET_ID_HERE</span>/pub?output=csv
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>3.2 Update the Website Code</h3>
+      <p>Once you have your Sheet ID, I'll update the website code to use your new sheet. Just provide me with your Sheet ID!</p>
+    </div>
+  </div>
+
+  <div class="section success">
+    <h2>✅ Step 4: Test Your Setup</h2>
+    <p>After setting up your sheet and updating the website:</p>
+    <ol>
+      <li>Open your website and check the Events section</li>
+      <li>Verify that your events are displaying correctly</li>
+      <li>Test adding a new event to your sheet</li>
+      <li>Refresh your website to see the new event appear</li>
+    </ol>
+  </div>
+
+  <div class="section warning">
+    <h2>⚠️ Important Notes</h2>
+    <ul>
+      <li><strong>Date Format:</strong> Always use YYYY-MM-DD format (e.g., 2025-01-15)</li>
+      <li><strong>Time Format:</strong> Use 12-hour format with AM/PM (e.g., 6:00 PM)</li>
+      <li><strong>Images:</strong> Leave the image column empty for now, or use publicly accessible image URLs</li>
+      <li><strong>Updates:</strong> Changes to your sheet will appear on the website within a few minutes</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🛠️ Quick Actions</h2>
+    <p>Ready to get started? Use these quick links:</p>
+    <a href="https://docs.google.com/spreadsheets/create" target="_blank" class="link-button">Create New Sheet</a>
+    <a href="test-sheets.html" class="link-button">Test Current Setup</a>
+    <a href="index.html" class="link-button">View Website</a>
+  </div>
+
+  <div class="section">
+    <h2>📞 Need Help?</h2>
+    <p>Once you've created your Google Sheet and published it, just share your Sheet ID with me and I'll update the website code to use your new events sheet!</p>
+    <p><strong>Your Sheet ID will look like:</strong> <code>1gfu3GyIrpyA3CxvfuJNf938VZNAoyaVhimbs3Q1k7WE</code></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASUO Student Government</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="index-page">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo">
+        <img src="./2024-ASUO-Seal-BLK.png" alt="ASUO Logo" style="height: 35px; vertical-align: middle; margin-right: 0.1rem; margin-top: -4px;">
+        ASUO
+      </a>
+      <ul class="nav-links">
+        <li><a href="#statement">About</a></li>
+        <li><a href="#statement">Statement</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#calendar">Calendar</a></li>
+        <li><a href="passed-resolutions.html">Passed Resolutions</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="sges.html">SGES</a></li>
+        <li class="dropdown">
+          <div class="dropdown-toggle">
+            I am a <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="dropdown-menu">
+            <a href="undergraduate.html">Undergraduate</a>
+            <a href="graduate-student.html">Graduate Student</a>
+            <a href="doctoral-student.html">Doctoral Student</a>
+            <a href="first-year-student.html">First-Year Student</a>
+            <a href="transfer-student.html">Transfer Student</a>
+            <a href="international-student.html">International Student</a>
+            <a href="non-traditional-student.html">Non-Traditional Student</a>
+            <a href="online-student.html">Online Student</a>
+            <a href="part-time-student.html">Part-Time Student</a>
+            <a href="https://sges.uoregon.edu/benefits" target="_blank">Student Parent</a>
+            <a href="veteran-student.html">Veteran Student</a>
+            <a href="alumni.html">Alumni</a>
+            <a href="faculty-staff.html">Faculty/Staff</a>
+            <a href="current-officer.html">Current Officer</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-pattern"></div>
+    <div id="aurora-container" class="aurora-container"></div>
+    <div class="hero-content">
+      <h1>ASUO Student Government</h1>
+      <p>Representing and serving the student body through engagement, advocacy, and positive change across campus.</p>
+      <div class="hero-buttons">
+        <a href="https://uoregon.joinhandshake.com/job-search/10112227?query=ASUO&per_page=25&sort=relevance&page=1" target="_blank" class="btn btn-primary">Apply On Handshake</a>
+        <a href="meet-the-directors.html" class="btn btn-outline">Learn More</a>
+        <a href="sges.html" class="btn btn-outline">SGES</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Links -->
+  <section class="social-section">
+    <div class="social-links">
+      <a href=https://www.instagram.com/asuogov?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      <a href="https://www.linkedin.com/company/asuo/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Statement Section -->
+    <section id="statement" class="section">
+      <div class="statement-button-container">
+        <a href="https://drive.google.com/drive/folders/1TxtM0hukqhHqQV0T8qqxrCmGAF0UULfx?usp=drive_link" target="_blank" class="btn-statement">
+          <i class="fas fa-file-text"></i>
+          View ASUO Statements
+        </a>
+      </div>
+    </section>
+
+    <!-- Campus Events Section -->
+    <section id="events" class="campus-events-section">
+      <div class="events-container">
+        <!-- Section Header -->
+        <div class="events-header">
+          <div class="events-title-group">
+            <h2 class="events-title">What's Happening on Campus</h2>
+            <p class="events-subtitle">Find events, RSVP fast, and bring a friend.</p>
+          </div>
+          
+          <!-- Search and Filters -->
+          <div class="events-controls">
+            <div class="search-container">
+              <input type="text" id="eventsSearch" class="events-search" placeholder="Search events, orgs, or locations…" aria-label="Search events">
+              <i class="fas fa-search search-icon"></i>
+            </div>
+            
+            <div class="filter-tabs">
+              <button class="filter-tab active" data-filter="all">All</button>
+              <button class="filter-tab" data-filter="academic">Academic</button>
+              <button class="filter-tab" data-filter="social">Social</button>
+              <button class="filter-tab" data-filter="wellness">Wellness</button>
+              <button class="filter-tab" data-filter="clubs">Clubs</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="events-grid" id="eventsList" role="grid" aria-label="Campus events">
+          <!-- Events will be loaded dynamically -->
+          <div class="loading-state" aria-label="Loading campus events">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+          <div class="empty-icon">📅</div>
+          <h3>No events match your filters</h3>
+          <p>Try clearing filters or check back later.</p>
+          <button class="clear-filters-btn" onclick="clearAllFilters()">View all events</button>
+        </div>
+
+        <!-- Error State -->
+        <div class="error-state" id="errorState" style="display: none;">
+          <div class="error-icon">⚠️</div>
+          <h3>Hmm, we couldn't load events</h3>
+          <p>Please refresh or try again in a minute.</p>
+          <button class="retry-btn" onclick="retryLoadEvents()">Retry</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Live Calendar</h2>
+        <p class="section-subtitle">Stay up to date with all upcoming ASUO events and meetings</p>
+      </div>
+      <div class="calendar-container">
+        <iframe src="https://calendar.google.com/calendar/embed?src=youremail%40gmail.com&ctz=America/Los_Angeles" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </section>
+
+    <!-- About I-Fee Section -->
+    <section id="i-fee" class="section">
+      <div class="section-header">
+        <h2 class="section-title">About the Incidental Fee (I-Fee)</h2>
+        <p class="section-subtitle">Understanding how your student fees support campus programs</p>
+      </div>
+      <div class="content-section">
+        <p>The I-Fee is a mandatory student fee determined annually by the ASUO through an open, democratic process. The current budget is ~<em>$9 million</em> and funds student programs and services.</p>
+        <div class="cta-buttons">
+          <a href="abouttheI-Fee.html" class="btn btn-outline">Learn More About I-Fee</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Passed Resolutions Section -->
+    <section id="resolutions" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Passed Resolutions</h2>
+        <p class="section-subtitle">View important resolutions passed by ASUO</p>
+      </div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-image">
+            <i class="fas fa-file-signature"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">ASUO Financial Transparency Resolution</h3>
+            <p class="card-description">A resolution to promote financial transparency within ASUO. Read the full text for details.</p>
+            <a href="passed-resolutions.html" class="btn btn-primary" style="margin-top: 1rem;">View Resolutions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-subtitle">Have questions or feedback? We'd love to hear from you!</p>
+      </div>
+      <div class="contact-info">
+        <p>Email: <a href="mailto:asuogov@uoregon.edu">asuogov@uoregon.edu</a></p>
+        <p>EMU 004 University of Oregon, Eugene, OR 97403</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Associated Students of the University of Oregon (ASUO)</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .event { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Events Loading Test</h1>
+    <div id="status">Loading...</div>
+    <div id="events"></div>
+
+    <script>
+        async function testEvents() {
+            const statusDiv = document.getElementById('status');
+            const eventsDiv = document.getElementById('events');
+            
+            try {
+                console.log('Testing events.json...');
+                const response = await fetch('./events.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const events = await response.json();
+                console.log('Events loaded:', events);
+                
+                statusDiv.innerHTML = `<div class="success">✅ Successfully loaded ${events.length} events</div>`;
+                
+                events.forEach(event => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.className = 'event';
+                    eventDiv.innerHTML = `
+                        <h3>${event.title}</h3>
+                        <p><strong>Date:</strong> ${event.start_iso}</p>
+                        <p><strong>Location:</strong> ${event.location.name}</p>
+                        <p><strong>Summary:</strong> ${event.summary}</p>
+                        <p><strong>Image:</strong> ${event.image_url}</p>
+                    `;
+                    eventsDiv.appendChild(eventDiv);
+                });
+                
+            } catch (error) {
+                console.error('Error loading events:', error);
+                statusDiv.innerHTML = `<div class="error">❌ Error: ${error.message}</div>`;
+            }
+        }
+        
+        // Test when page loads
+        testEvents();
+    </script>
+</body>
+</html>

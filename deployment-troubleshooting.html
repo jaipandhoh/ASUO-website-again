@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASUO Deployment Troubleshooting Guide</title>
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f8fafc;
+      color: #1a202c;
+    }
+    .header {
+      background: linear-gradient(135deg, #0f4c3a 0%, #1a6b4f 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .section {
+      background: white;
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-left: 4px solid #0f4c3a;
+    }
+    .problem {
+      background: #fef2f2;
+      border-left: 4px solid #ef4444;
+      color: #991b1b;
+    }
+    .solution {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      color: #166534;
+    }
+    .warning {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      color: #92400e;
+    }
+    .code-block {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+      margin: 10px 0;
+    }
+    .step {
+      background: #f0f9ff;
+      border-left: 4px solid #0ea5e9;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+    .step h3 {
+      color: #0ea5e9;
+      margin-top: 0;
+    }
+    .test-button {
+      background: #0f4c3a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 5px;
+      font-size: 14px;
+    }
+    .test-button:hover {
+      background: #1a6b4f;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🔧 ASUO Deployment Troubleshooting</h1>
+    <p>Solutions for logo not showing up on deployed website</p>
+  </div>
+
+  <div class="section problem">
+    <h2>🚨 Common Deployment Issues</h2>
+    <ul>
+      <li><strong>Logo not showing</strong> - File path or hosting issue</li>
+      <li><strong>Works locally but not deployed</strong> - Server configuration</li>
+      <li><strong>Some pages work, others don't</strong> - Inconsistent file structure</li>
+      <li><strong>404 errors</strong> - File not found on server</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🔍 Quick Diagnostic Tests</h2>
+    <div class="step">
+      <h3>Test 1: Check Browser Console</h3>
+      <p>Press F12 → Console tab → Look for errors like:</p>
+      <div class="code-block">
+GET https://yoursite.com/2024-ASUO-Seal-BLK.png 404 (Not Found)
+      </div>
+      <button class="test-button" onclick="testConsole()">Check Console</button>
+      <div id="consoleResult"></div>
+    </div>
+
+    <div class="step">
+      <h3>Test 2: Direct Image URL Test</h3>
+      <p>Try accessing your logo directly in browser:</p>
+      <div class="code-block">
+https://yourdomain.com/2024-ASUO-Seal-BLK.png
+      </div>
+      <button class="test-button" onclick="testDirectImage()">Test Direct URL</button>
+      <div id="directImageResult"></div>
+    </div>
+
+    <div class="step">
+      <h3>Test 3: File Structure Check</h3>
+      <p>Verify your deployed files match this structure:</p>
+      <div class="code-block">
+your-website/
+├── index.html
+├── 2024-ASUO-Seal-BLK.png  ← Must be here
+├── our-directors.html
+├── meet-the-directors.html
+└── ... (other files)
+      </div>
+    </div>
+  </div>
+
+  <div class="section solution">
+    <h2>✅ Solution 1: Try Different Logo Paths</h2>
+    <div class="step">
+      <h3>Option A: Absolute Path from Root</h3>
+      <div class="code-block">
+&lt;img src="/2024-ASUO-Seal-BLK.png" alt="ASUO Logo" ...&gt;
+      </div>
+    </div>
+    <div class="step">
+      <h3>Option B: Relative Path (Current)</h3>
+      <div class="code-block">
+&lt;img src="./2024-ASUO-Seal-BLK.png" alt="ASUO Logo" ...&gt;
+      </div>
+    </div>
+    <div class="step">
+      <h3>Option C: Simple Relative Path</h3>
+      <div class="code-block">
+&lt;img src="2024-ASUO-Seal-BLK.png" alt="ASUO Logo" ...&gt;
+      </div>
+    </div>
+  </div>
+
+  <div class="section solution">
+    <h2>✅ Solution 2: Base64 Embedding (Bulletproof)</h2>
+    <div class="step">
+      <h3>Convert logo to base64 and embed directly</h3>
+      <p>This eliminates all file path issues:</p>
+      <div class="code-block">
+&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..." alt="ASUO Logo" style="height: 35px;"&gt;
+      </div>
+      <p><strong>Pros:</strong> Always works, no file dependencies</p>
+      <p><strong>Cons:</strong> Larger HTML file size</p>
+    </div>
+  </div>
+
+  <div class="section solution">
+    <h2>✅ Solution 3: Hosting-Specific Fixes</h2>
+    <div class="step">
+      <h3>Netlify</h3>
+      <p>Make sure files are in the <code>public</code> folder or root directory</p>
+    </div>
+    <div class="step">
+      <h3>Vercel</h3>
+      <p>Files should be in the root directory, not in subfolders</p>
+    </div>
+    <div class="step">
+      <h3>GitHub Pages</h3>
+      <p>Files should be in the root of your repository</p>
+    </div>
+    <div class="step">
+      <h3>Traditional Hosting</h3>
+      <p>Upload files to <code>public_html</code> or <code>www</code> directory</p>
+    </div>
+  </div>
+
+  <div class="section warning">
+    <h2>⚠️ Common Hosting Issues</h2>
+    <ul>
+      <li><strong>Case Sensitivity:</strong> Some servers are case-sensitive (Linux)</li>
+      <li><strong>File Permissions:</strong> Image files need read permissions</li>
+      <li><strong>Subdirectory Deployment:</strong> Files might be in wrong folder</li>
+      <li><strong>CDN Caching:</strong> Old cached versions might be served</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🧪 Testing Checklist</h2>
+    <div class="step">
+      <h3>Before Deployment:</h3>
+      <ul>
+        <li>✅ Logo file exists in deployment folder</li>
+        <li>✅ All HTML files have correct logo paths</li>
+        <li>✅ Test locally - logo shows up</li>
+      </ul>
+    </div>
+    <div class="step">
+      <h3>After Deployment:</h3>
+      <ul>
+        <li>✅ Check browser console for errors</li>
+        <li>✅ Test direct image URL</li>
+        <li>✅ Verify file structure on server</li>
+        <li>✅ Try different logo path formats</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📞 Need More Help?</h2>
+    <p>Tell me:</p>
+    <ul>
+      <li>What hosting service are you using?</li>
+      <li>What errors do you see in the browser console?</li>
+      <li>Does the logo work when you test locally?</li>
+      <li>Can you access the logo directly via URL?</li>
+      <li>What does your deployed file structure look like?</li>
+    </ul>
+  </div>
+
+  <script>
+    function testConsole() {
+      const result = document.getElementById('consoleResult');
+      result.innerHTML = '<p style="color: #0ea5e9;">🔍 Open your browser console (F12) and look for any red error messages related to the logo file.</p>';
+    }
+
+    function testDirectImage() {
+      const result = document.getElementById('directImageResult');
+      result.innerHTML = '<p style="color: #0ea5e9;">🔍 Try opening this URL in a new tab: <code>https://yourdomain.com/2024-ASUO-Seal-BLK.png</code> (replace yourdomain.com with your actual domain)</p>';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Sheets Test - ASUO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .test-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .success { color: green; }
+    .error { color: red; }
+    .info { color: blue; }
+    button {
+      background: #0f4c3a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button:hover { background: #1a6b4f; }
+    pre {
+      background: #f8f8f8;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+      max-height: 300px;
+    }
+    .event-card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Google Sheets Events Test</h1>
+  
+  <div class="test-section">
+    <h2>Test Your Google Sheets URL</h2>
+    <p>Click the button below to test if your Google Sheets is accessible:</p>
+    <button onclick="testSheetsURL()">Test Google Sheets</button>
+    <div id="urlTestResult"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>Test CSV Parsing</h2>
+    <p>Test if the CSV data can be parsed correctly:</p>
+    <button onclick="testCSVParsing()">Test CSV Parsing</button>
+    <div id="csvTestResult"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>Test Events Display</h2>
+    <p>Test how events will appear on your website:</p>
+    <button onclick="testEventsDisplay()">Test Events Display</button>
+    <div id="eventsTestResult"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>Instructions</h2>
+    <h3>1. Publish Your Google Sheet:</h3>
+    <ol>
+      <li>Open your Google Sheet</li>
+      <li>Go to <strong>File → Share → Publish to web</strong></li>
+      <li>Select <strong>"Comma-separated values (.csv)"</strong></li>
+      <li>Click <strong>"Publish"</strong></li>
+    </ol>
+    
+    <h3>2. Set Up Your Sheet Columns:</h3>
+    <p>Make sure your first row has these column headers:</p>
+    <ul>
+      <li><strong>title</strong> - Event title</li>
+      <li><strong>description</strong> - Event description</li>
+      <li><strong>date</strong> - Event date (YYYY-MM-DD format)</li>
+      <li><strong>time</strong> - Event time (e.g., "6:00 PM")</li>
+      <li><strong>location</strong> - Event location</li>
+      <li><strong>image</strong> - Optional image URL</li>
+    </ul>
+    
+    <h3>3. Example Data:</h3>
+    <pre>title,description,date,time,location,image
+ASUO Senate Meeting,Weekly ASUO Senate meeting,2025-01-15,6:00 PM,EMU 145,
+Student Organization Fair,Join us to learn about organizations,2025-01-20,11:00 AM - 2:00 PM,EMU Amphitheater,
+ASUO Town Hall,Open forum for students,2025-01-25,7:00 PM,EMU 145,</pre>
+  </div>
+
+  <script>
+    // Test Google Sheets URL
+    async function testSheetsURL() {
+      const resultDiv = document.getElementById('urlTestResult');
+      resultDiv.innerHTML = '<p class="info">🔄 Testing Google Sheets URL...</p>';
+      
+      try {
+        const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTqhC-waBGOSA1dqvoQk2Q0gsQPUDWLJqwJbSgihrhvVxcekCvNUe2Jtp9EB7JYM1mnr9d7gP-TatPP/pub?output=csv';
+        console.log('Testing URL:', url);
+        
+        const response = await fetch(url);
+        console.log('Response status:', response.status);
+        console.log('Response ok:', response.ok);
+        
+        if (response.ok) {
+          const text = await response.text();
+          console.log('Response text (first 200 chars):', text.substring(0, 200));
+          resultDiv.innerHTML = `
+            <p class="success">✅ Google Sheets is accessible!</p>
+            <p><strong>Status:</strong> ${response.status}</p>
+            <p><strong>Content Preview:</strong></p>
+            <pre>${text.substring(0, 300)}...</pre>
+          `;
+        } else {
+          resultDiv.innerHTML = `
+            <p class="error">❌ Google Sheets not accessible</p>
+            <p><strong>Status:</strong> ${response.status}</p>
+            <p><strong>Status Text:</strong> ${response.statusText}</p>
+            <p><strong>Solution:</strong> Make sure your sheet is published as CSV (File → Share → Publish to web)</p>
+          `;
+        }
+      } catch (error) {
+        console.error('Error testing URL:', error);
+        resultDiv.innerHTML = `
+          <p class="error">❌ Error testing URL</p>
+          <p><strong>Error:</strong> ${error.message}</p>
+          <p><strong>Solution:</strong> Check your internet connection and make sure the sheet is published</p>
+        `;
+      }
+    }
+
+    // Test CSV Parsing
+    async function testCSVParsing() {
+      const resultDiv = document.getElementById('csvTestResult');
+      resultDiv.innerHTML = '<p class="info">🔄 Testing CSV parsing...</p>';
+      
+      try {
+        const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTqhC-waBGOSA1dqvoQk2Q0gsQPUDWLJqwJbSgihrhvVxcekCvNUe2Jtp9EB7JYM1mnr9d7gP-TatPP/pub?output=csv';
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+          resultDiv.innerHTML = '<p class="error">❌ Cannot fetch CSV data</p>';
+          return;
+        }
+        
+        const csvText = await response.text();
+        const events = parseCSV(csvText);
+        console.log('Parsed events:', events);
+        
+        resultDiv.innerHTML = `
+          <p class="success">✅ CSV parsing works!</p>
+          <p><strong>Found ${events.length} events:</strong></p>
+          <pre>${JSON.stringify(events, null, 2)}</pre>
+        `;
+      } catch (error) {
+        console.error('Error parsing CSV:', error);
+        resultDiv.innerHTML = `
+          <p class="error">❌ CSV parsing failed</p>
+          <p><strong>Error:</strong> ${error.message}</p>
+        `;
+      }
+    }
+
+    // Test Events Display
+    async function testEventsDisplay() {
+      const resultDiv = document.getElementById('eventsTestResult');
+      resultDiv.innerHTML = '<p class="info">🔄 Testing events display...</p>';
+      
+      try {
+        const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTqhC-waBGOSA1dqvoQk2Q0gsQPUDWLJqwJbSgihrhvVxcekCvNUe2Jtp9EB7JYM1mnr9d7gP-TatPP/pub?output=csv';
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+          resultDiv.innerHTML = '<p class="error">❌ Cannot fetch events data</p>';
+          return;
+        }
+        
+        const csvText = await response.text();
+        const events = parseCSV(csvText);
+        
+        if (events.length === 0) {
+          resultDiv.innerHTML = '<p class="warning">⚠️ No events found in your sheet</p>';
+          return;
+        }
+        
+        const html = events.map(event => `
+          <div class="event-card">
+            <h3>${event.title || 'No Title'}</h3>
+            <p><strong>Description:</strong> ${event.description || 'No Description'}</p>
+            <p><strong>Date:</strong> ${event.date ? new Date(event.date).toLocaleDateString() : 'No Date'}</p>
+            <p><strong>Time:</strong> ${event.time || 'No Time'}</p>
+            <p><strong>Location:</strong> ${event.location || 'No Location'}</p>
+          </div>
+        `).join('');
+        
+        resultDiv.innerHTML = `
+          <p class="success">✅ Events display works!</p>
+          <p><strong>Displaying ${events.length} events:</strong></p>
+          ${html}
+        `;
+      } catch (error) {
+        console.error('Error displaying events:', error);
+        resultDiv.innerHTML = `
+          <p class="error">❌ Events display failed</p>
+          <p><strong>Error:</strong> ${error.message}</p>
+        `;
+      }
+    }
+
+    // CSV Parsing function (copied from index.js)
+    function parseCSV(text) {
+      const lines = text.trim().split('\n');
+      const headers = lines.shift().split(',');
+      return lines.map(line => {
+        const values = line.split(',');
+        return headers.reduce((obj, header, index) => {
+          obj[header.trim()] = values[index] ? values[index].trim() : '';
+          return obj;
+        }, {});
+      });
+    }
+
+    // Auto-run tests on page load
+    window.addEventListener('load', () => {
+      console.log('🧪 Google Sheets Test Page Loaded');
+      console.log('Click the test buttons above to debug your Google Sheets setup');
+    });
+  </script>
+</body>
+</html>

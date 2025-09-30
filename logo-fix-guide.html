@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASUO Logo Fix Guide</title>
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f8fafc;
+      color: #1a202c;
+    }
+    .header {
+      background: linear-gradient(135deg, #0f4c3a 0%, #1a6b4f 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .section {
+      background: white;
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-left: 4px solid #0f4c3a;
+    }
+    .problem {
+      background: #fef2f2;
+      border-left: 4px solid #ef4444;
+      color: #991b1b;
+    }
+    .solution {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      color: #166534;
+    }
+    .code-block {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+      margin: 10px 0;
+    }
+    .highlight {
+      background: #fef3c7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .step {
+      background: #f0f9ff;
+      border-left: 4px solid #0ea5e9;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+    .step h3 {
+      color: #0ea5e9;
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🔧 ASUO Logo Display Fix Guide</h1>
+    <p>Solutions for logo not showing up on deployed website</p>
+  </div>
+
+  <div class="section problem">
+    <h2>🚨 Common Logo Display Issues</h2>
+    <ul>
+      <li><strong>Logo not showing</strong> - Image path is incorrect</li>
+      <li><strong>Title not showing</strong> - CSS or HTML structure issue</li>
+      <li><strong>Broken image icon</strong> - File not found or wrong path</li>
+      <li><strong>Works locally but not deployed</strong> - Path structure difference</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🔍 Current Logo Reference</h2>
+    <p>Your current logo reference in index.html:</p>
+    <div class="code-block">
+&lt;img src="2024-ASUO-Seal-BLK.png" alt="ASUO Logo" style="height: 35px; vertical-align: middle; margin-right: 0.1rem; margin-top: -4px;"&gt;
+    </div>
+  </div>
+
+  <div class="section solution">
+    <h2>✅ Solution 1: Use Absolute Path (Recommended)</h2>
+    <div class="step">
+      <h3>Update the logo path to use absolute path</h3>
+      <p>Change from:</p>
+      <div class="code-block">
+src="2024-ASUO-Seal-BLK.png"
+      </div>
+      <p>To:</p>
+      <div class="code-block">
+src="./2024-ASUO-Seal-BLK.png"
+      </div>
+      <p>Or even better:</p>
+      <div class="code-block">
+src="/2024-ASUO-Seal-BLK.png"
+      </div>
+    </div>
+  </div>
+
+  <div class="section solution">
+    <h2>✅ Solution 2: Check File Structure</h2>
+    <div class="step">
+      <h3>Ensure logo file is in the same directory as index.html</h3>
+      <p>Your deployment structure should look like:</p>
+      <div class="code-block">
+your-website/
+├── index.html
+├── 2024-ASUO-Seal-BLK.png
+├── index.css
+├── index.js
+├── meet-the-directors.html
+├── our-directors.html
+└── ... (other files)
+      </div>
+    </div>
+  </div>
+
+  <div class="section solution">
+    <h2>✅ Solution 3: Use Base64 Encoding (Bulletproof)</h2>
+    <div class="step">
+      <h3>Convert logo to base64 and embed directly</h3>
+      <p>This ensures the logo always shows regardless of file paths:</p>
+      <div class="code-block">
+&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..." alt="ASUO Logo" style="height: 35px;"&gt;
+      </div>
+      <p><strong>Pros:</strong> Always works, no file path issues</p>
+      <p><strong>Cons:</strong> Larger HTML file size</p>
+    </div>
+  </div>
+
+  <div class="section solution">
+    <h2>✅ Solution 4: Check CSS for Title Display</h2>
+    <div class="step">
+      <h3>Verify CSS is loading properly</h3>
+      <p>Make sure your CSS file is linked correctly:</p>
+      <div class="code-block">
+&lt;link rel="stylesheet" href="index.css"&gt;
+      </div>
+      <p>And check that the logo CSS is working:</p>
+      <div class="code-block">
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🧪 Testing Steps</h2>
+    <div class="step">
+      <h3>1. Test Locally</h3>
+      <p>Open your website locally and check if logo shows</p>
+    </div>
+    <div class="step">
+      <h3>2. Check Browser Console</h3>
+      <p>Press F12 → Console tab → Look for 404 errors</p>
+    </div>
+    <div class="step">
+      <h3>3. Test Different Paths</h3>
+      <p>Try these variations in your deployed site:</p>
+      <ul>
+        <li><code>./2024-ASUO-Seal-BLK.png</code></li>
+        <li><code>/2024-ASUO-Seal-BLK.png</code></li>
+        <li><code>2024-ASUO-Seal-BLK.png</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🚀 Quick Fix Commands</h2>
+    <p>I can help you implement any of these solutions. Just let me know which approach you prefer:</p>
+    <ol>
+      <li><strong>Absolute Path Fix</strong> - Update all logo references to use absolute paths</li>
+      <li><strong>Base64 Encoding</strong> - Convert logo to base64 and embed directly</li>
+      <li><strong>File Structure Check</strong> - Verify all files are in correct locations</li>
+      <li><strong>CSS Debug</strong> - Check if CSS is loading properly</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>📞 Need Help?</h2>
+    <p>Tell me:</p>
+    <ul>
+      <li>What hosting service are you using? (Netlify, Vercel, GitHub Pages, etc.)</li>
+      <li>Do you see any errors in the browser console?</li>
+      <li>Does the logo work when you test locally?</li>
+      <li>What does your deployed file structure look like?</li>
+    </ul>
+  </div>
+</body>
+</html>
