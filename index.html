@@ -17,11 +17,24 @@
         ASUO
       </a>
       <ul class="nav-links">
-        <li><a href="#statement">About</a></li>
-        <li><a href="#statement">Statement</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#calendar">Calendar</a></li>
-        <li><a href="passed-resolutions.html">Passed Resolutions</a></li>
+        <li><a href="#i-fee">About Us</a></li>
+        <li><a href="our-directors.html">Meet Officers</a></li>
+        <li class="dropdown">
+          <div class="dropdown-toggle">
+            Get Involved <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="dropdown-menu">
+            <a href="https://uoregon.joinhandshake.com/job-search/10112227?query=ASUO&per_page=25&sort=relevance&page=1" target="_blank">Handshake</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <div class="dropdown-toggle">
+            Branches <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="dropdown-menu">
+            <a href="passed-resolutions.html">Passed Resolutions</a>
+          </div>
+        </li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="sges.html">SGES</a></li>
         <li class="dropdown">
@@ -29,20 +42,32 @@
             I am a <i class="fas fa-chevron-down"></i>
           </div>
           <div class="dropdown-menu">
-            <a href="undergraduate.html">Undergraduate</a>
-            <a href="graduate-student.html">Graduate Student</a>
-            <a href="doctoral-student.html">Doctoral Student</a>
-            <a href="first-year-student.html">First-Year Student</a>
-            <a href="transfer-student.html">Transfer Student</a>
-            <a href="international-student.html">International Student</a>
-            <a href="non-traditional-student.html">Non-Traditional Student</a>
-            <a href="online-student.html">Online Student</a>
-            <a href="part-time-student.html">Part-Time Student</a>
+            <div class="dropdown-submenu">
+              <div class="dropdown-submenu-toggle">
+                Current Student <i class="fas fa-chevron-right"></i>
+              </div>
+              <div class="dropdown-submenu-content">
+                <a href="undergraduate.html">Undergraduate</a>
+                <a href="graduate-student.html">Graduate</a>
+                <a href="law-student.html">Law</a>
+                <a href="first-year-student.html">First Year</a>
+              </div>
+            </div>
+            <div class="dropdown-submenu">
+              <div class="dropdown-submenu-toggle">
+                Non-Traditional Student <i class="fas fa-chevron-right"></i>
+              </div>
+              <div class="dropdown-submenu-content">
+                <a href="veteran-student.html">Veteran</a>
+                <a href="international-student.html">International</a>
+                <a href="transfer-student.html">Transfer</a>
+                <a href="first-generation-student.html">First Generation</a>
+              </div>
+            </div>
             <a href="https://sges.uoregon.edu/benefits" target="_blank">Student Parent</a>
-            <a href="veteran-student.html">Veteran Student</a>
             <a href="alumni.html">Alumni</a>
-            <a href="faculty-staff.html">Faculty/Staff</a>
             <a href="current-officer.html">Current Officer</a>
+            <a href="#student-org-leaders">Student Org Leaders</a>
           </div>
         </li>
       </ul>
@@ -58,9 +83,8 @@
       <h1>ASUO Student Government</h1>
       <p>Representing and serving the student body through engagement, advocacy, and positive change across campus.</p>
       <div class="hero-buttons">
-        <a href="https://uoregon.joinhandshake.com/job-search/10112227?query=ASUO&per_page=25&sort=relevance&page=1" target="_blank" class="btn btn-primary">Apply On Handshake</a>
         <a href="meet-the-directors.html" class="btn btn-outline">Learn More</a>
-        <a href="sges.html" class="btn btn-outline">SGES</a>
+        <a href="sges.html" class="btn btn-clear">SGES</a>
       </div>
     </div>
   </section>
@@ -75,17 +99,8 @@
   </section>
 
   <!-- Main Content -->
-  <main class="main-content">
+  <main class="main-content futuristic-reveal">
 
-    <!-- Statement Section -->
-    <section id="statement" class="section">
-      <div class="statement-button-container">
-        <a href="https://drive.google.com/drive/folders/1TxtM0hukqhHqQV0T8qqxrCmGAF0UULfx?usp=drive_link" target="_blank" class="btn-statement">
-          <i class="fas fa-file-text"></i>
-          View ASUO Statements
-        </a>
-      </div>
-    </section>
 
     <!-- Campus Events Section -->
     <section id="events" class="campus-events-section">
@@ -124,8 +139,8 @@
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
-          </div>
-        </div>
+      </div>
+      </div>
 
         <!-- Empty State -->
         <div class="empty-state" id="emptyState" style="display: none;">
@@ -133,7 +148,7 @@
           <h3>No events match your filters</h3>
           <p>Try clearing filters or check back later.</p>
           <button class="clear-filters-btn" onclick="clearAllFilters()">View all events</button>
-        </div>
+      </div>
 
         <!-- Error State -->
         <div class="error-state" id="errorState" style="display: none;">
@@ -141,7 +156,7 @@
           <h3>Hmm, we couldn't load events</h3>
           <p>Please refresh or try again in a minute.</p>
           <button class="retry-btn" onclick="retryLoadEvents()">Retry</button>
-        </div>
+      </div>
       </div>
     </section>
 
@@ -152,7 +167,7 @@
         <p class="section-subtitle">Stay up to date with all upcoming ASUO events and meetings</p>
       </div>
       <div class="calendar-container">
-        <iframe src="https://calendar.google.com/calendar/embed?src=youremail%40gmail.com&ctz=America/Los_Angeles" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://calendar.google.com/calendar/embed?src=NTFhMzBlZWYwZDMxNzJhOTA2OWEwMmZjMGZlY2YwMjM2N2FlNGQ0YzZjM2U4M2E1OTE5NjJjYzQ5NDNkNWQyM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&ctz=America/Los_Angeles" frameborder="0" scrolling="no"></iframe>
       </div>
     </section>
 
@@ -186,6 +201,45 @@
             <h3 class="card-title">ASUO Financial Transparency Resolution</h3>
             <p class="card-description">A resolution to promote financial transparency within ASUO. Read the full text for details.</p>
             <a href="passed-resolutions.html" class="btn btn-primary" style="margin-top: 1rem;">View Resolutions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student Org Leaders -->
+    <section id="student-org-leaders" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Student Organization Leaders</h2>
+        <p class="section-subtitle">Your voice matters in shaping the student experience at UO</p>
+      </div>
+      <div class="student-org-content">
+        <div class="org-leader-card">
+          <div class="card-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Share Your Experience</h3>
+            <p class="card-description">Help us understand the student organization experience at UO. Your anonymous feedback helps us improve support and resources for all student groups.</p>
+            <div class="feedback-options">
+              <a href="https://forms.gle/LBn96TJrZyhZ9ydW7" target="_blank" class="btn btn-primary">
+                <i class="fas fa-comment-dots"></i>
+                Student Org Experience Survey
+              </a>
+              <p class="form-note">Anonymous • Optional organization identification</p>
+            </div>
+          </div>
+        </div>
+        <div class="org-leader-info">
+          <h4>What We're Looking For:</h4>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Your overall experience as a student org leader</li>
+            <li><i class="fas fa-check-circle"></i> Challenges you face and support you need</li>
+            <li><i class="fas fa-check-circle"></i> Ideas for improving student organization resources</li>
+            <li><i class="fas fa-check-circle"></i> Feedback on ASUO services and programs</li>
+          </ul>
+          <div class="privacy-note">
+            <i class="fas fa-shield-alt"></i>
+            <strong>Your privacy is protected:</strong> All responses are anonymous. You may optionally share which organization you represent, but this is completely voluntary.
           </div>
         </div>
       </div>

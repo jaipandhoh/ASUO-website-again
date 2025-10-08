@@ -136,6 +136,9 @@ body:not(.index-page) .nav-container {
   padding: 0.5rem 1rem;
   border-radius: 8px;
   transition: background 0.3s ease;
+  border: none;
+  outline: none;
+  background: transparent;
 }
 
 .dropdown-toggle:hover {
@@ -145,8 +148,9 @@ body:not(.index-page) .nav-container {
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  right: 0;
+  left: 0;
   background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: var(--shadow-lg);
   padding: 0.5rem;
@@ -155,6 +159,14 @@ body:not(.index-page) .nav-container {
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.3s ease;
+  overflow: visible;
+  outline: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  z-index: 1000;
+  margin-top: 4px;
 }
 
 .dropdown-menu.show {
@@ -172,6 +184,85 @@ body:not(.index-page) .nav-container {
 
 .dropdown-menu a:hover {
   background: var(--surface-alt);
+}
+
+/* Dropdown Submenu */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.dropdown-submenu-toggle:hover {
+  background: var(--surface-alt);
+}
+
+.dropdown-submenu-toggle i {
+  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+}
+
+.dropdown-submenu.active .dropdown-submenu-toggle i {
+  transform: rotate(90deg);
+}
+
+.dropdown-submenu-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: var(--surface-alt);
+  border-radius: 8px;
+  margin: 0.25rem 0;
+  position: relative;
+  z-index: 1002;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Nested submenu positioning */
+.dropdown-submenu .dropdown-submenu-content {
+  position: relative;
+  left: 0;
+  top: 0;
+  min-width: 200px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  z-index: 1003;
+  margin: 0.25rem 0 0 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.dropdown-submenu.active .dropdown-submenu-content {
+  max-height: 400px;
+}
+
+.dropdown-submenu-content a {
+  padding: 0.5rem 1rem 0.5rem 2rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.dropdown-submenu-content a:hover {
+  background: var(--border);
+  color: var(--primary);
 }
 
 /* Aurora Container */
@@ -305,12 +396,24 @@ body:not(.index-page) .nav-container {
 }
 
 .btn-outline {
+  background: var(--accent);
+  color: var(--primary);
+  border: 2px solid var(--accent);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: var(--accent);
+  border-color: var(--primary);
+}
+
+.btn-clear {
   background: transparent;
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.btn-outline:hover {
+.btn-clear:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.5);
 }
@@ -541,6 +644,150 @@ body:not(.index-page) .main-content {
   border: none;
 }
 
+/* Student Org Leaders Section */
+.student-org-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.org-leader-card {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.org-leader-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.org-leader-card .card-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+}
+
+.org-leader-card .card-icon i {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.org-leader-card .card-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.org-leader-card .card-description {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.feedback-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.feedback-options .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+}
+
+.form-note {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+  font-style: italic;
+}
+
+.org-leader-info {
+  background: var(--surface-alt);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid var(--border);
+}
+
+.org-leader-info h4 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.org-leader-info ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.org-leader-info li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.org-leader-info li i {
+  color: var(--accent);
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.privacy-note {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1rem;
+  border-left: 4px solid var(--accent);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.privacy-note i {
+  color: var(--accent);
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.privacy-note strong {
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .student-org-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .org-leader-card,
+  .org-leader-info {
+    padding: 1.5rem;
+  }
+}
+
 /* Contact */
 .contact-info {
   text-align: center;
@@ -578,6 +825,96 @@ body:not(.index-page) .main-content {
 
 .footer p {
   opacity: 0.8;
+}
+
+/* Futuristic Transition Effects */
+.futuristic-reveal {
+  opacity: 0;
+  transform: translateY(100px) scale(0.95);
+  filter: blur(10px);
+  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.futuristic-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0px);
+}
+
+/* Futuristic Glow Effect */
+.futuristic-reveal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(255, 210, 0, 0.1) 0%, 
+    rgba(15, 76, 58, 0.1) 25%, 
+    rgba(255, 210, 0, 0.1) 50%, 
+    rgba(15, 76, 58, 0.1) 75%, 
+    rgba(255, 210, 0, 0.1) 100%);
+  background-size: 400% 400%;
+  animation: futuristicGlow 3s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.futuristic-reveal.revealed::before {
+  opacity: 1;
+}
+
+@keyframes futuristicGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Futuristic Border Animation */
+.futuristic-reveal::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    var(--accent), 
+    var(--primary), 
+    var(--accent), 
+    var(--primary));
+  background-size: 400% 400%;
+  animation: futuristicBorder 2s linear infinite;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.futuristic-reveal.revealed::after {
+  opacity: 0.3;
+}
+
+@keyframes futuristicBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Animations */

@@ -131,6 +131,38 @@ main {
   margin-bottom: 3rem;
 }
 
+.office-hours-button-container {
+  margin-top: 1.5rem;
+}
+
+.office-hours-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: var(--primary);
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--accent);
+}
+
+.office-hours-button:hover {
+  background: var(--primary);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.office-hours-button i {
+  font-size: 1.1rem;
+}
+
 .section-title {
   font-family: var(--font-display);
   font-size: 2.5rem;

@@ -832,18 +832,98 @@ window.addEventListener('scroll', () => {
 
 // Dropdown functionality
 document.addEventListener('DOMContentLoaded', () => {
-  const dropdown = document.querySelector('.dropdown');
-  const toggle = dropdown.querySelector('.dropdown-toggle');
-  const menu = dropdown.querySelector('.dropdown-menu');
+  // Handle all dropdowns
+  const dropdowns = document.querySelectorAll('.dropdown');
+  
+  dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
 
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    menu.classList.toggle('show');
+    if (toggle && menu) {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        // Close all other dropdowns first
+        dropdowns.forEach(otherDropdown => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.querySelector('.dropdown-menu').classList.remove('show');
+            // Also close all submenus in other dropdowns
+            const otherSubmenus = otherDropdown.querySelectorAll('.dropdown-submenu');
+            otherSubmenus.forEach(submenu => {
+              submenu.classList.remove('active');
+            });
+          }
+        });
+        
+        // Toggle current dropdown
+        menu.classList.toggle('show');
+        
+        // If closing current dropdown, also close its submenus
+        if (!menu.classList.contains('show')) {
+          const currentSubmenus = dropdown.querySelectorAll('.dropdown-submenu');
+          currentSubmenus.forEach(submenu => {
+            submenu.classList.remove('active');
+          });
+        }
+      });
+    }
   });
 
+  // Submenu functionality - handle all submenus
+  const submenuToggles = document.querySelectorAll('.dropdown-submenu-toggle');
+  
+  submenuToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const submenu = toggle.closest('.dropdown-submenu');
+      const parentDropdown = submenu.closest('.dropdown');
+      
+      if (submenu) {
+        // Close all other submenus in the same dropdown
+        const allSubmenus = parentDropdown.querySelectorAll('.dropdown-submenu');
+        allSubmenus.forEach(otherSubmenu => {
+          if (otherSubmenu !== submenu) {
+            otherSubmenu.classList.remove('active');
+          }
+        });
+        
+        // Toggle current submenu
+        submenu.classList.toggle('active');
+      }
+    });
+  });
+
+  // Close dropdowns when clicking outside
   document.addEventListener('click', () => {
-    menu.classList.remove('show');
+    // Close all dropdowns
+    dropdowns.forEach(dropdown => {
+      dropdown.querySelector('.dropdown-menu').classList.remove('show');
+    });
+    
+    // Close all submenus
+    const allSubmenus = document.querySelectorAll('.dropdown-submenu');
+    allSubmenus.forEach(submenu => {
+      submenu.classList.remove('active');
+    });
   });
+});
+
+// Futuristic Reveal Effect on Scroll
+const futuristicElements = document.querySelectorAll('.futuristic-reveal');
+
+const futuristicObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+});
+
+futuristicElements.forEach(element => {
+  futuristicObserver.observe(element);
 });
 
 // Smooth scrolling for navigation links
