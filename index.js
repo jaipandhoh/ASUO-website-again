@@ -236,12 +236,225 @@ class AuroraEffect {
   }
 }
 
+// Photo Rotator
+class PhotoRotator {
+  constructor() {
+    this.slides = document.querySelectorAll('.photo-slide');
+    this.indicators = document.querySelectorAll('.photo-indicator');
+    this.prevBtn = document.querySelector('.photo-prev');
+    this.nextBtn = document.querySelector('.photo-next');
+    this.currentSlide = 0;
+    this.autoPlayInterval = null;
+    this.isPaused = false;
+    
+    this.init();
+  }
+
+  init() {
+    if (this.slides.length === 0) return;
+    
+    this.setupEventListeners();
+    this.startAutoPlay();
+    this.updateSlide();
+  }
+
+  setupEventListeners() {
+    // Previous button
+    if (this.prevBtn) {
+      this.prevBtn.addEventListener('click', () => this.previousSlide());
+    }
+
+    // Next button
+    if (this.nextBtn) {
+      this.nextBtn.addEventListener('click', () => this.nextSlide());
+    }
+
+    // Indicators
+    this.indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => this.goToSlide(index));
+    });
+
+    // Pause on hover
+    const photoRotator = document.querySelector('.photo-rotator');
+    if (photoRotator) {
+      photoRotator.addEventListener('mouseenter', () => this.pauseAutoPlay());
+      photoRotator.addEventListener('mouseleave', () => this.resumeAutoPlay());
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') this.previousSlide();
+      if (e.key === 'ArrowRight') this.nextSlide();
+    });
+
+    // Respect reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this.pauseAutoPlay();
+    }
+  }
+
+  startAutoPlay() {
+    this.autoPlayInterval = setInterval(() => {
+      if (!this.isPaused) {
+        this.nextSlide();
+      }
+    }, 4000); // Change slide every 4 seconds
+  }
+
+  pauseAutoPlay() {
+    this.isPaused = true;
+  }
+
+  resumeAutoPlay() {
+    this.isPaused = false;
+  }
+
+  nextSlide() {
+    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+    this.updateSlide();
+  }
+
+  previousSlide() {
+    this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+    this.updateSlide();
+  }
+
+  goToSlide(index) {
+    this.currentSlide = index;
+    this.updateSlide();
+  }
+
+  updateSlide() {
+    // Update slides
+    this.slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === this.currentSlide);
+    });
+
+    // Update indicators
+    this.indicators.forEach((indicator, index) => {
+      indicator.classList.toggle('active', index === this.currentSlide);
+    });
+  }
+}
+
+// Hero Rotator
+class HeroRotator {
+  constructor() {
+    this.slides = document.querySelectorAll('.hero-slide');
+    this.indicators = document.querySelectorAll('.hero-indicator');
+    this.prevBtn = document.querySelector('.hero-prev');
+    this.nextBtn = document.querySelector('.hero-next');
+    this.currentSlide = 0;
+    this.autoPlayInterval = null;
+    this.isPaused = false;
+    
+    this.init();
+  }
+
+  init() {
+    if (this.slides.length === 0) return;
+    
+    this.setupEventListeners();
+    this.startAutoPlay();
+    this.updateSlide();
+  }
+
+  setupEventListeners() {
+    // Previous/Next buttons
+    if (this.prevBtn) {
+      this.prevBtn.addEventListener('click', () => this.previousSlide());
+    }
+    if (this.nextBtn) {
+      this.nextBtn.addEventListener('click', () => this.nextSlide());
+    }
+
+    // Indicators
+    this.indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => this.goToSlide(index));
+    });
+
+    // Pause on hover
+    const rotator = document.querySelector('.hero-rotator');
+    if (rotator) {
+      rotator.addEventListener('mouseenter', () => this.pauseAutoPlay());
+      rotator.addEventListener('mouseleave', () => this.resumeAutoPlay());
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') this.previousSlide();
+      if (e.key === 'ArrowRight') this.nextSlide();
+    });
+
+    // Respect reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this.stopAutoPlay();
+    }
+  }
+
+  nextSlide() {
+    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+    this.updateSlide();
+  }
+
+  previousSlide() {
+    this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+    this.updateSlide();
+  }
+
+  goToSlide(index) {
+    this.currentSlide = index;
+    this.updateSlide();
+  }
+
+  updateSlide() {
+    // Update slides
+    this.slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === this.currentSlide);
+    });
+
+    // Update indicators
+    this.indicators.forEach((indicator, index) => {
+      indicator.classList.toggle('active', index === this.currentSlide);
+    });
+  }
+
+  startAutoPlay() {
+    this.autoPlayInterval = setInterval(() => {
+      if (!this.isPaused) {
+        this.nextSlide();
+      }
+    }, 5000); // 5 seconds
+  }
+
+  stopAutoPlay() {
+    if (this.autoPlayInterval) {
+      clearInterval(this.autoPlayInterval);
+      this.autoPlayInterval = null;
+    }
+  }
+
+  pauseAutoPlay() {
+    this.isPaused = true;
+  }
+
+  resumeAutoPlay() {
+    this.isPaused = false;
+  }
+}
+
 // Initialize Aurora Effect
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM loaded, initializing Aurora effect...');
   setTimeout(() => {
     new AuroraEffect('aurora-container');
   }, 100);
+  
+  // Initialize Photo Rotator
+  new PhotoRotator();
+  
+  // Initialize Hero Rotator
+  new HeroRotator();
 });
 
 // Campus Events System
@@ -295,23 +508,32 @@ class CampusEventsManager {
   async loadEvents() {
     try {
       this.showLoading();
-      
-      // Use local JSON directly since Google Sheets URL is not working
       let events = [];
-      
+
+      // Prefer local JSON so the page always shows events, then update from Sheets if available
       try {
         console.log('🔄 Loading events from local JSON...');
         events = await this.loadFromLocalJSON();
         console.log('✅ Successfully loaded events from local JSON');
       } catch (jsonError) {
-        console.log('⚠️ Local JSON failed, trying Google Sheets...', jsonError);
+        console.warn('⚠️ Local JSON failed, trying Google Sheets...', jsonError);
         events = await this.loadFromGoogleSheets();
         console.log('✅ Successfully loaded events from Google Sheets');
       }
-      
+
       this.events = events;
       this.filterEvents();
-      
+
+      // Try refreshing from Sheets in the background even if local worked
+      this.loadFromGoogleSheets()
+        .then(sheetEvents => {
+          if (Array.isArray(sheetEvents) && sheetEvents.length) {
+            this.events = sheetEvents;
+            this.filterEvents();
+            console.log('🔁 Events refreshed from Google Sheets in background');
+          }
+        })
+        .catch(() => {});
     } catch (error) {
       console.error('❌ Error loading events:', error);
       this.showError();
@@ -319,46 +541,102 @@ class CampusEventsManager {
   }
 
   async loadFromGoogleSheets() {
-    // Replace this URL with your Google Sheets CSV export URL
-    const sheetsUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTqhC-waBGOSA1dqvoQk2Q0gsQPUDWLJqwJbSgihrhvVxcekCvNUe2Jtp9EB7JYM1mnr9d7gP-TatPP/pub?output=csv';
-    
-    const response = await fetch(sheetsUrl);
+    const sheetsUrl = 'https://docs.google.com/spreadsheets/d/1gfu3GyIrpyA3CxvfuJNf938VZNAoyaVhimbs3Q1k7WE/export?format=csv&gid=0';
+
+    const response = await fetch(sheetsUrl, { cache: 'no-store' });
     if (!response.ok) {
       throw new Error(`Google Sheets request failed: ${response.status}`);
     }
-    
+
     const csvText = await response.text();
     console.log('📄 CSV received from Google Sheets');
-    
+
     return this.parseCSVToEvents(csvText);
   }
 
-  async loadFromLocalJSON() {
-    const response = await fetch('./events.json');
-    if (!response.ok) {
-      throw new Error('Failed to load local events');
+  // Basic RFC 4180-ish CSV parser that handles quotes and commas
+  parseCSV(text) {
+    const rows = [];
+    let row = [];
+    let cell = '';
+    let i = 0;
+    let inQuotes = false;
+
+    while (i < text.length) {
+      const char = text[i];
+      const next = text[i + 1];
+
+      if (inQuotes) {
+        if (char === '"' && next === '"') { // escaped quote
+          cell += '"';
+          i += 2;
+          continue;
+        }
+        if (char === '"') {
+          inQuotes = false;
+          i += 1;
+          continue;
+        }
+        cell += char;
+        i += 1;
+        continue;
+      }
+
+      if (char === '"') {
+        inQuotes = true;
+        i += 1;
+        continue;
+      }
+
+      if (char === ',') {
+        row.push(cell.trim());
+        cell = '';
+        i += 1;
+        continue;
+      }
+
+      if (char === '\n' || char === '\r') {
+        // finalize row
+        if (cell.length || row.length) {
+          row.push(cell.trim());
+          rows.push(row);
+          row = [];
+          cell = '';
+        }
+        // consume both CRLF if present
+        if (char === '\r' && next === '\n') i += 2; else i += 1;
+        continue;
+      }
+
+      cell += char;
+      i += 1;
     }
-    return await response.json();
+
+    // flush last cell/row
+    if (cell.length || row.length) {
+      row.push(cell.trim());
+      rows.push(row);
+    }
+
+    return rows;
   }
 
   parseCSVToEvents(csvText) {
-    const lines = csvText.trim().split('\n');
-    const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
-    
+    const rows = this.parseCSV(csvText);
+    if (!rows.length) return [];
+
+    const headers = rows[0].map(h => h.trim().toLowerCase());
     console.log('📋 CSV Headers:', headers);
-    
+
     const events = [];
-    
-    for (let i = 1; i < lines.length; i++) {
-      const values = lines[i].split(',').map(v => v.trim());
-      if (values.length < headers.length) continue;
-      
+    for (let i = 1; i < rows.length; i++) {
+      const values = rows[i];
+      if (!values || !values.length) continue;
+
       const event = {};
-      
-      // Map CSV columns to event properties
+
       headers.forEach((header, index) => {
-        const value = values[index] || '';
-        
+        const value = (values[index] || '').trim();
         switch (header) {
           case 'title':
             event.title = value;
@@ -370,11 +648,14 @@ class CampusEventsManager {
           case 'category':
             event.category = value;
             break;
-          case 'tags':
-            event.tags = value ? value.split(';').map(t => t.trim()) : [];
+          case 'tags': {
+            const sep = value.includes(';') ? ';' : ',';
+            event.tags = value ? value.split(sep).map(t => t.trim()).filter(Boolean) : [];
             break;
+          }
           case 'start_date':
           case 'date':
+          case 'start':
             event.start_date = value;
             break;
           case 'start_time':
@@ -382,6 +663,7 @@ class CampusEventsManager {
             event.start_time = value;
             break;
           case 'end_time':
+          case 'end':
             event.end_time = value;
             break;
           case 'location':
@@ -397,6 +679,7 @@ class CampusEventsManager {
             break;
           case 'rsvp_url':
           case 'rsvp':
+          case 'link':
             event.rsvp_url = value;
             break;
           case 'is_free':
@@ -404,76 +687,25 @@ class CampusEventsManager {
             event.is_free = value.toLowerCase() === 'true' || value.toLowerCase() === 'yes' || value === '1';
             break;
           case 'capacity':
-            event.capacity = parseInt(value) || 1000;
+            event.capacity = value;
+            break;
+          case 'image':
+          case 'image_url':
+            event.image_url = value;
             break;
         }
       });
-      
-      // Generate ID if not provided
-      event.id = `ev_${String(i).padStart(3, '0')}`;
-      
-      // Set defaults for required fields
-      event.org = event.org || 'ASUO';
-      event.category = event.category || 'social';
-      event.tags = event.tags || ['free'];
-      event.location_name = event.location_name || 'TBD';
-      event.address = event.address || 'University of Oregon, Eugene, OR';
-      event.summary = event.summary || 'Join us for this exciting event!';
-      event.is_free = event.is_free !== false;
-      event.capacity = event.capacity || 1000;
-      
-      // Create ISO dates
-      if (event.start_date && event.start_time) {
-        const dateStr = `${event.start_date} ${event.start_time}`;
-        const startDate = new Date(dateStr);
-        const endDate = event.end_time ? new Date(`${event.start_date} ${event.end_time}`) : new Date(startDate.getTime() + 2 * 60 * 60 * 1000); // Default 2 hours
-        
-        event.start_iso = startDate.toISOString();
-        event.end_iso = endDate.toISOString();
-      } else {
-        // Default dates if not provided
-        const defaultDate = new Date();
-        defaultDate.setDate(defaultDate.getDate() + 7); // 1 week from now
-        event.start_iso = defaultDate.toISOString();
-        event.end_iso = new Date(defaultDate.getTime() + 2 * 60 * 60 * 1000).toISOString();
+
+      // If a single ISO datetime provided in start field, split into date/time
+      if (!event.start_time && event.start_date && /t/i.test(event.start_date)) {
+        const parts = event.start_date.split(/[t\s]/i);
+        event.start_date = parts[0];
+        event.start_time = parts[1] || '';
       }
-      
-      // Create location object
-      event.location = {
-        name: event.location_name,
-        address: event.address,
-        lat: 44.045,
-        lng: -123.07,
-        is_virtual: false,
-        join_url: ''
-      };
-      
-      // Create price object
-      event.price = {
-        currency: 'USD',
-        amount: event.is_free ? 0 : 10,
-        is_free: event.is_free
-      };
-      
-      // Create capacity object
-      event.capacity = {
-        max: event.capacity,
-        remaining: event.capacity
-      };
-      
-      // Add timestamps
-      event.created_at = new Date().toISOString();
-      event.updated_at = new Date().toISOString();
-      
-      // Add timezone
-      event.timezone = 'America/Los_Angeles';
-      
-      // Add description
-      event.description_md = event.summary;
-      
+
       events.push(event);
     }
-    
+
     console.log('📅 Parsed events from CSV:', events);
     return events;
   }
@@ -932,9 +1164,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      const offsetTop = target.offsetTop - 80;
+      // Use scroll-margin-top if available, otherwise use larger offset
+      const navbarHeight = 100;
+      const offsetTop = target.offsetTop - navbarHeight;
       window.scrollTo({
-        top: offsetTop,
+        top: Math.max(0, offsetTop),
         behavior: 'smooth'
       });
     }

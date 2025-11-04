@@ -3,28 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASUO Student Government</title>
+  <title>ASUO Student Government | University of Oregon</title>
+  <meta name="description" content="ASUO supports University of Oregon students with resources, advocacy, and opportunities to get involved.">
+  <meta name="keywords" content="ASUO, University of Oregon, student government, student resources, campus events">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="blob-cursor.css">
 </head>
 <body class="index-page">
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
   <!-- Navigation -->
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <a href="/" class="logo">
+      <a href="/" class="logo" aria-label="ASUO Homepage">
         <img src="./2024-ASUO-Seal-BLK.png" alt="ASUO Logo" style="height: 35px; vertical-align: middle; margin-right: 0.1rem; margin-top: -4px;">
         ASUO
       </a>
-      <ul class="nav-links">
-        <li><a href="#i-fee">About Us</a></li>
-        <li><a href="our-directors.html">Meet Officers</a></li>
+      <ul class="nav-links" role="menubar">
+        <li class="dropdown" role="none">
+          <div class="dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">
+            About <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </div>
+          <div class="dropdown-menu" role="menu" aria-label="About submenu">
+            <a href="#i-fee" role="menuitem">About Us</a>
+            <a href="our-directors.html" role="menuitem">Meet Officers</a>
+          </div>
+        </li>
         <li class="dropdown">
           <div class="dropdown-toggle">
             Get Involved <i class="fas fa-chevron-down"></i>
           </div>
           <div class="dropdown-menu">
-            <a href="https://uoregon.joinhandshake.com/job-search/10112227?query=ASUO&per_page=25&sort=relevance&page=1" target="_blank">Handshake</a>
+            <a href="#events">Events</a>
+            <a href="#calendar">Calendar</a>
+            <a href="https://uoregon.joinhandshake.com/job-search/10112227?query=ASUO&per_page=25&sort=relevance&page=1" target="_blank">Apply on Handshake</a>
           </div>
         </li>
         <li class="dropdown">
@@ -32,6 +47,9 @@
             Branches <i class="fas fa-chevron-down"></i>
           </div>
           <div class="dropdown-menu">
+            <a href="executive-branch.html">Executive</a>
+            <a href="legislative-branch.html">Legislative</a>
+            <a href="judicial-branch.html">Judicial</a>
             <a href="passed-resolutions.html">Passed Resolutions</a>
           </div>
         </li>
@@ -39,52 +57,127 @@
         <li><a href="sges.html">SGES</a></li>
         <li class="dropdown">
           <div class="dropdown-toggle">
-            I am a <i class="fas fa-chevron-down"></i>
+            I am: <i class="fas fa-chevron-down"></i>
           </div>
           <div class="dropdown-menu">
-            <div class="dropdown-submenu">
-              <div class="dropdown-submenu-toggle">
-                Current Student <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="dropdown-submenu-content">
-                <a href="undergraduate.html">Undergraduate</a>
-                <a href="graduate-student.html">Graduate</a>
-                <a href="law-student.html">Law</a>
-                <a href="first-year-student.html">First Year</a>
-              </div>
-            </div>
-            <div class="dropdown-submenu">
-              <div class="dropdown-submenu-toggle">
-                Non-Traditional Student <i class="fas fa-chevron-right"></i>
-              </div>
-              <div class="dropdown-submenu-content">
-                <a href="veteran-student.html">Veteran</a>
-                <a href="international-student.html">International</a>
-                <a href="transfer-student.html">Transfer</a>
-                <a href="first-generation-student.html">First Generation</a>
-              </div>
-            </div>
-            <a href="https://sges.uoregon.edu/benefits" target="_blank">Student Parent</a>
+            <a href="current-student.html">Current Student</a>
+            <a href="undergraduate.html">Undergraduate</a>
+            <a href="student-worker.html">Student Worker</a>
+            <a href="non-traditional-student.html">Non-Traditional Student</a>
             <a href="alumni.html">Alumni</a>
+            <a href="student-parent.html">Student Parent</a>
             <a href="current-officer.html">Current Officer</a>
-            <a href="#student-org-leaders">Student Org Leaders</a>
+            <a href="student-org-leader.html">Student Org Leader</a>
           </div>
         </li>
       </ul>
     </div>
   </nav>
 
+  <!-- Photo Rotator Section -->
+  <section class="photo-rotator">
+    <div class="photo-slides">
+      <div class="photo-slide active">
+        <img src="./asuo media day 3-16.jpg" alt="ASUO students group photo" loading="lazy">
+        <div class="photo-overlay">
+          <div class="photo-content">
+            <h2>ASUO Student Government</h2>
+            <p>Building community through student leadership</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-slide">
+        <img src="./asuo media day 3-17.jpg" alt="ASUO leadership team" loading="lazy">
+        <div class="photo-overlay">
+          <div class="photo-content">
+            <h2>Student Leadership</h2>
+            <p>Empowering voices across campus</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-slide">
+        <img src="./asuo media day 3-20.jpg" alt="ASUO representatives" loading="lazy">
+        <div class="photo-overlay">
+          <div class="photo-content">
+            <h2>Representing Students</h2>
+            <p>Advocating for positive change</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-slide">
+        <img src="./asuo media day 3-25.jpg" alt="ASUO team" loading="lazy">
+        <div class="photo-overlay">
+          <div class="photo-content">
+            <h2>Community Building</h2>
+            <p>Creating connections across campus</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="photo-controls">
+      <button class="photo-prev" aria-label="Previous photo">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="photo-next" aria-label="Next photo">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="photo-indicators">
+      <button class="photo-indicator active" data-slide="0" aria-label="Go to photo 1"></button>
+      <button class="photo-indicator" data-slide="1" aria-label="Go to photo 2"></button>
+      <button class="photo-indicator" data-slide="2" aria-label="Go to photo 3"></button>
+      <button class="photo-indicator" data-slide="3" aria-label="Go to photo 4"></button>
+    </div>
+  </section>
+
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-pattern"></div>
     <div id="aurora-container" class="aurora-container"></div>
+    
     <div class="hero-content">
       <h1>ASUO Student Government</h1>
-      <p>Representing and serving the student body through engagement, advocacy, and positive change across campus.</p>
+      <p>Together, we build a stronger university community. Representing and serving the student body through engagement, advocacy, and positive change across campus.</p>
       <div class="hero-buttons">
-        <a href="meet-the-directors.html" class="btn btn-outline">Learn More</a>
+        <a href="#i-fee" class="btn btn-outline">Learn More</a>
         <a href="sges.html" class="btn btn-clear">SGES</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASUO Definition Section -->
+  <section class="asuo-definition-section">
+    <div class="asuo-definition-container">
+      <div class="asuo-definition-card">
+        <div class="asuo-acronym">
+          <span class="acronym-letter">A</span>
+          <span class="acronym-letter">S</span>
+          <span class="acronym-letter">U</span>
+          <span class="acronym-letter">O</span>
+        </div>
+        <div class="asuo-full-name">
+          <span class="name-word"><strong>Associated</strong></span>
+          <span class="name-word"><strong>Students</strong></span>
+          <span class="name-word"><strong>of</strong></span>
+          <span class="name-word"><strong>the</strong></span>
+          <span class="name-word"><strong>University</strong></span>
+          <span class="name-word"><strong>of</strong></span>
+          <span class="name-word accent-word"><strong>Oregon</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Office Hours Section -->
+  <section class="office-hours-section">
+    <div class="office-hours-container">
+      <div class="office-hours-card">
+        <div class="office-hours-content">
+          <h2>Office Hours</h2>
+          <p>Meet with ASUO leadership and get your questions answered</p>
+          <a href="office-hours.html" class="btn btn-outline">View Office Hours</a>
+        </div>
       </div>
     </div>
   </section>
@@ -92,14 +185,17 @@
   <!-- Social Links -->
   <section class="social-section">
     <div class="social-links">
-      <a href=https://www.instagram.com/asuogov?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram">
+      <a href="https://www.instagram.com/asuogov?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram">
         <i class="fab fa-instagram"></i>
-      <a href="https://www.linkedin.com/company/asuo/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </a>
+      <a href="https://www.linkedin.com/company/asuo/" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
     </div>
   </section>
 
   <!-- Main Content -->
-  <main class="main-content futuristic-reveal">
+  <main class="main-content futuristic-reveal" id="main-content" role="main">
 
 
     <!-- Campus Events Section -->
@@ -171,6 +267,48 @@
       </div>
     </section>
 
+    <!-- Student Organization Leaders Section -->
+    <section id="student-experience" class="section student-org-section">
+      <div class="section-header">
+        <h2 class="section-title">Student Organization Leaders</h2>
+        <p class="section-subtitle">Your voice matters in shaping the student experience at UO</p>
+      </div>
+      <div class="student-org-content">
+        <div class="org-card" id="student-org-survey">
+          <div class="card-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Share Your Experience</h3>
+            <p class="card-description">Help us understand the student organization experience at UO. Your anonymous feedback helps us improve support and resources for all student groups.</p>
+            <a href="https://forms.gle/LBn96TJrZyhZ9ydW7" target="_blank" class="btn btn-survey">
+              <i class="fas fa-comment-dots"></i>
+              Student Org Experience Survey
+            </a>
+            <p class="card-footer">Anonymous • Optional organization identification</p>
+          </div>
+        </div>
+        
+        <div class="org-card">
+          <div class="card-content">
+            <h3 class="card-title">What We're Looking For:</h3>
+            <ul class="feedback-list">
+              <li><i class="fas fa-check"></i> Your overall experience as a student org leader</li>
+              <li><i class="fas fa-check"></i> Challenges you face and support you need</li>
+              <li><i class="fas fa-check"></i> Ideas for improving student organization resources</li>
+              <li><i class="fas fa-check"></i> Feedback on ASUO services and programs</li>
+            </ul>
+            <div class="privacy-notice">
+              <i class="fas fa-shield-alt"></i>
+              <div class="privacy-text">
+                <strong>Your privacy is protected:</strong> All responses are anonymous. You may optionally share which organization you represent, but this is completely voluntary.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- About I-Fee Section -->
     <section id="i-fee" class="section">
       <div class="section-header">
@@ -181,66 +319,6 @@
         <p>The I-Fee is a mandatory student fee determined annually by the ASUO through an open, democratic process. The current budget is ~<em>$9 million</em> and funds student programs and services.</p>
         <div class="cta-buttons">
           <a href="abouttheI-Fee.html" class="btn btn-outline">Learn More About I-Fee</a>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Passed Resolutions Section -->
-    <section id="resolutions" class="section">
-      <div class="section-header">
-        <h2 class="section-title">Passed Resolutions</h2>
-        <p class="section-subtitle">View important resolutions passed by ASUO</p>
-      </div>
-      <div class="cards-grid">
-        <div class="card">
-          <div class="card-image">
-            <i class="fas fa-file-signature"></i>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title">ASUO Financial Transparency Resolution</h3>
-            <p class="card-description">A resolution to promote financial transparency within ASUO. Read the full text for details.</p>
-            <a href="passed-resolutions.html" class="btn btn-primary" style="margin-top: 1rem;">View Resolutions</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Student Org Leaders -->
-    <section id="student-org-leaders" class="section">
-      <div class="section-header">
-        <h2 class="section-title">Student Organization Leaders</h2>
-        <p class="section-subtitle">Your voice matters in shaping the student experience at UO</p>
-      </div>
-      <div class="student-org-content">
-        <div class="org-leader-card">
-          <div class="card-icon">
-            <i class="fas fa-users"></i>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title">Share Your Experience</h3>
-            <p class="card-description">Help us understand the student organization experience at UO. Your anonymous feedback helps us improve support and resources for all student groups.</p>
-            <div class="feedback-options">
-              <a href="https://forms.gle/LBn96TJrZyhZ9ydW7" target="_blank" class="btn btn-primary">
-                <i class="fas fa-comment-dots"></i>
-                Student Org Experience Survey
-              </a>
-              <p class="form-note">Anonymous • Optional organization identification</p>
-            </div>
-          </div>
-        </div>
-        <div class="org-leader-info">
-          <h4>What We're Looking For:</h4>
-          <ul>
-            <li><i class="fas fa-check-circle"></i> Your overall experience as a student org leader</li>
-            <li><i class="fas fa-check-circle"></i> Challenges you face and support you need</li>
-            <li><i class="fas fa-check-circle"></i> Ideas for improving student organization resources</li>
-            <li><i class="fas fa-check-circle"></i> Feedback on ASUO services and programs</li>
-          </ul>
-          <div class="privacy-note">
-            <i class="fas fa-shield-alt"></i>
-            <strong>Your privacy is protected:</strong> All responses are anonymous. You may optionally share which organization you represent, but this is completely voluntary.
-          </div>
         </div>
       </div>
     </section>
@@ -258,11 +336,303 @@
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 Associated Students of the University of Oregon (ASUO)</p>
+  <!-- Global Footer -->
+  <footer class="global-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Questions? We're here to help!</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> <a href="mailto:asuo@uoregon.edu">asuo@uoregon.edu</a></p>
+            <p><i class="fas fa-map-marker-alt"></i> EMU Room 004</p>
+            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/asuogov" target="_blank">@asuogov</a></p>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#i-fee">About Us</a></li>
+            <li><a href="our-directors.html">Meet Officers</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="passed-resolutions.html">Resolutions</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="https://docs.google.com/spreadsheets/d/1Lv6Qag_fVtIpUmC_kAx1WdnGxP1y3bTJKApPuUYavok/edit?gid=1375568540#gid=1375568540" target="_blank">Office Hours</a></li>
+            <li><a href="sges.html">SGES</a></li>
+            <li><a href="https://uoregon.joinhandshake.com/job-search/10112227?query=ASUO&per_page=25&sort=relevance&page=1" target="_blank">Handshake</a></li>
+          </ul>
+        </div>
+            </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Associated Students of the University of Oregon (ASUO)</p>
+            </div>
+          </div>
   </footer>
 
+</body>
   <script src="index.js"></script>
+  <script src="blob-cursor.js"></script>
+  <script>
+  (function() {
+    // ---- CONFIG ----
+    const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1gfu3GyIrpyA3CxvfuJNf938VZNAoyaVhimbs3Q1k7WE/export?format=csv&amp;gid=0';
+    const PAGE_SIZE = 9;
+
+    // ---- DOM ----
+    const listEl = document.getElementById('eventsList');
+    const emptyEl = document.getElementById('emptyState');
+    const errorEl = document.getElementById('errorState');
+    const searchEl = document.getElementById('eventsSearch');
+    const tabs = document.querySelectorAll('.filter-tab');
+
+    let all = [];
+    let filtered = [];
+    let shown = 0;
+    let activeFilter = 'all';
+
+    // Lightweight CSV parser that handles quoted fields and commas
+    function parseCSV(text) {
+      const rows = [];
+      let cur = '';
+      let row = [];
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        const next = text[i + 1];
+
+        if (c === '"') {
+          if (inQuotes && next === '"') {
+            cur += '"'; // escaped quote
+            i++;        // skip next char
+          } else {
+            inQuotes = !inQuotes;
+          }
+        } else if (c === ',' && !inQuotes) {
+          row.push(cur);
+          cur = '';
+        } else if ((c === '\n' || c === '\r') && !inQuotes) {
+          if (cur !== '' || row.length) {
+            row.push(cur);
+            rows.push(row);
+            row = [];
+            cur = '';
+          }
+          // swallow CRLF pairs
+          if (c === '\r' && next === '\n') i++;
+        } else {
+          cur += c;
+        }
+      }
+      if (cur !== '' || row.length) {
+        row.push(cur);
+        rows.push(row);
+      }
+      return rows;
+    }
+
+    function normalizeHeader(h) {
+      return (h || '')
+        .toLowerCase()
+        .replace(/\s+/g, '_')
+        .replace(/[^\w]/g, '');
+    }
+
+    function parseRows(csvText) {
+      const rows = parseCSV(csvText);
+      if (!rows.length) return [];
+      const header = rows.shift().map(normalizeHeader);
+
+      return rows
+        .map(r => {
+          const obj = {};
+          header.forEach((key, i) => obj[key] = (r[i] || '').trim());
+          return obj;
+        })
+        .filter(o => Object.values(o).some(v => v && v.length));
+    }
+
+    function toEvent(row) {
+      // Supported column names (case/space-insensitive):
+      // title, start, end, location, tags, url, description, category, image
+      const get = (k) => row[k] || row[k.toLowerCase()] || '';
+      const tags = (get('tags') || '')
+        .split(/[,|]/)
+        .map(s => s.trim())
+        .filter(Boolean);
+
+      const category = (get('category') || tags[0] || 'all').toLowerCase();
+
+      return {
+        id: get('id') || (get('title') + get('start')).replace(/\s+/g,'-').toLowerCase(),
+        title: get('title'),
+        start: get('start'),
+        end: get('end'),
+        location: get('location'),
+        tags,
+        url: get('url') || get('link'),
+        description: get('description') || get('details') || '',
+        category,
+        image: get('image') || ''
+      };
+    }
+
+    function fmtDateRange(startISO, endISO) {
+      if (!startISO) return '';
+      const s = new Date(startISO);
+      const e = endISO ? new Date(endISO) : null;
+      const optsDate = { year:'numeric', month:'short', day:'numeric' };
+      const optsTime = { hour:'numeric', minute:'2-digit' };
+      if (isNaN(s)) return startISO; // fallback if not ISO
+      if (e && !isNaN(e)) {
+        if (s.toDateString() !== e.toDateString()) {
+          return `${s.toLocaleDateString([], optsDate)} ${s.toLocaleTimeString([], optsTime)} – ${e.toLocaleDateString([], optsDate)} ${e.toLocaleTimeString([], optsTime)}`;
+        }
+        return `${s.toLocaleDateString([], optsDate)} ${s.toLocaleTimeString([], optsTime)} – ${e.toLocaleTimeString([], optsTime)}`;
+      }
+      return `${s.toLocaleDateString([], optsDate)} ${s.toLocaleTimeString([], optsTime)}`;
+    }
+
+    function eventCard(e) {
+      const tags = (e.tags || []).map(t => `<span class="event-tag">${t}</span>`).join(' ');
+      const img = e.image ? `
+        <div class="event-image-wrapper">
+          <img src="${e.image}" alt="${e.title || 'Event'}" loading="lazy" class="event-image">
+          <div class="event-image-overlay"></div>
+        </div>
+      ` : `
+        <div class="event-image-wrapper">
+          <div class="event-image-placeholder">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="event-image-overlay"></div>
+        </div>
+      `;
+      
+      return `
+        <article class="event-card" role="row">
+          ${img}
+          <div class="event-card-body">
+            <div class="event-badges">
+              ${tags ? `<div class="event-tags">${tags}</div>` : ''}
+            </div>
+            <div class="event-card-content">
+              <h3 class="event-title">${e.title || 'Untitled Event'}</h3>
+              ${e.description ? `<p class="event-desc">${e.description}</p>` : ''}
+              <div class="event-meta-info">
+                <div class="event-meta-item">
+                  <i class="fas fa-clock"></i>
+                  <span>${fmtDateRange(e.start, e.end)}</span>
+                </div>
+                ${e.location ? `
+                <div class="event-meta-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>${e.location}</span>
+                </div>
+                ` : ''}
+              </div>
+              ${e.url ? `
+                <a href="${e.url}" target="_blank" rel="noopener" class="event-cta-btn">
+                  <span>Learn More</span>
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              ` : ''}
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function renderPage() {
+      listEl.innerHTML = '';
+      const slice = filtered.slice(0, shown);
+      slice.forEach(e => listEl.insertAdjacentHTML('beforeend', eventCard(e)));
+
+      // Hide loading skeletons if present
+      const loading = listEl.querySelector('.loading-state');
+      if (loading) loading.remove();
+
+      emptyEl.style.display = filtered.length ? 'none' : 'block';
+      errorEl.style.display = 'none';
+    }
+
+    function applyFilters() {
+      const q = (searchEl.value || '').toLowerCase().trim();
+
+      filtered = all.filter(e => {
+        if (activeFilter !== 'all' && e.category !== activeFilter) return false;
+        if (!q) return true;
+        const hay = [
+          e.title, e.location, e.description, (e.tags || []).join(' ')
+        ].join(' ').toLowerCase();
+        return hay.includes(q);
+      });
+
+      // Sort by start date ascending
+      filtered.sort((a, b) => {
+        const as = new Date(a.start).getTime();
+        const bs = new Date(b.start).getTime();
+        return (isNaN(as) ? Infinity : as) - (isNaN(bs) ? Infinity : bs);
+      });
+
+      shown = Math.min(PAGE_SIZE, filtered.length);
+      renderPage();
+    }
+
+    function bindUI() {
+      searchEl.addEventListener('input', () => {
+        shown = 0;
+        applyFilters();
+      });
+
+      tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabs.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeFilter = (btn.getAttribute('data-filter') || 'all').toLowerCase();
+          shown = 0;
+          applyFilters();
+        });
+      });
+    }
+
+    async function load() {
+      try {
+        // Show loading skeleton (already in DOM)
+        const res = await fetch(SHEET_CSV_URL, { cache: 'no-store' });
+        if (!res.ok) throw new Error('Fetch failed');
+        const text = await res.text();
+        const rows = parseRows(text);
+        all = rows.map(toEvent).filter(e => e.title && e.start);
+        bindUI();
+        applyFilters();
+      } catch (err) {
+        console.error('[Events loader] ', err);
+        errorEl.style.display = 'block';
+        emptyEl.style.display = 'none';
+      }
+    }
+
+    // Expose Clear / Retry for buttons in the markup
+    window.clearAllFilters = function() {
+      activeFilter = 'all';
+      tabs.forEach(b => b.classList.remove('active'));
+      const allBtn = Array.from(tabs).find(b => b.getAttribute('data-filter') === 'all');
+      if (allBtn) allBtn.classList.add('active');
+      searchEl.value = '';
+      shown = 0;
+      applyFilters();
+    };
+    window.retryLoadEvents = function() {
+      errorEl.style.display = 'none';
+      load();
+    };
+
+    // Kick off
+    load();
+  })();
+  </script>
 </body>
 </html>
