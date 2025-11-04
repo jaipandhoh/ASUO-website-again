@@ -1125,8 +1125,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Close dropdowns when clicking on links inside dropdown menus
+  document.querySelectorAll('.dropdown-menu a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      // Close all dropdowns
+      dropdowns.forEach(dropdown => {
+        dropdown.querySelector('.dropdown-menu').classList.remove('show');
+      });
+      
+      // Close all submenus
+      const allSubmenus = document.querySelectorAll('.dropdown-submenu');
+      allSubmenus.forEach(submenu => {
+        submenu.classList.remove('active');
+      });
+    });
+  });
+
   // Close dropdowns when clicking outside
-  document.addEventListener('click', () => {
+  document.addEventListener('click', (e) => {
+    // Don't close if clicking inside a dropdown
+    if (e.target.closest('.dropdown')) {
+      return;
+    }
+    
     // Close all dropdowns
     dropdowns.forEach(dropdown => {
       dropdown.querySelector('.dropdown-menu').classList.remove('show');
@@ -1164,11 +1185,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      // Use scroll-margin-top if available, otherwise use larger offset
-      const navbarHeight = 100;
-      const offsetTop = target.offsetTop - navbarHeight;
+      // Calculate actual navbar height
+      const navbar = document.querySelector('.navbar');
+      const navbarHeight = navbar ? navbar.offsetHeight : 100;
+      
+      // Get the element's position relative to the document
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20; // Extra 20px padding
+      
       window.scrollTo({
-        top: Math.max(0, offsetTop),
+        top: Math.max(0, offsetPosition),
         behavior: 'smooth'
       });
     }

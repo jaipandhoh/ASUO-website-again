@@ -2125,6 +2125,15 @@ body:not(.index-page) .main-content {
 .campus-events-section {
   padding: 4rem 0;
   background: linear-gradient(135deg, var(--surface-alt) 0%, var(--surface) 100%);
+  scroll-margin-top: 120px;
+}
+
+#events {
+  scroll-margin-top: 120px;
+}
+
+#calendar {
+  scroll-margin-top: 120px;
 }
 
 .events-container {
