@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - ASUO</title>
+  <meta name="description" content="Contact ASUO Student Government - Get in touch with questions, feedback, or visit our office">
+  <link rel="icon" type="image/png" href="./asuo-white-logo.png">
+  <link rel="apple-touch-icon" href="./asuo-white-logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./asuo-white-logo.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="./asuo-white-logo.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="./asuo-white-logo.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./asuo-white-logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./asuo-white-logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
+  <script src="index.js"></script>
+  <style>
+    .contact-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(244, 211, 94, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .contact-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-hero h1 {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .contact-hero p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+    }
+
+    .contact-main {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-card {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 50%, var(--primary) 100%);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+
+    .contact-card-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+      font-size: 1.5rem;
+    }
+
+    .contact-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .contact-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .contact-card a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .contact-card a:hover {
+      color: var(--accent);
+    }
+
+    .office-hours-card {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--border);
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .office-hours-card h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .office-hours-card p {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .btn-office-hours {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--accent);
+    }
+
+    .btn-office-hours:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-xl);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .contact-hero h1 {
+        font-size: 2rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="logo" aria-label="ASUO Homepage">
+        <img src="./2024-ASUO-Seal-BLK.png" alt="ASUO Logo" style="height: 35px; vertical-align: middle; margin-right: 0.1rem; margin-top: -4px;">
+        ASUO
+      </a>
+      <ul class="nav-links" role="menubar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="our-directors.html">Meet Officers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="contact-hero-content">
+      <h1>Contact Us</h1>
+      <p>Have questions or feedback? We'd love to hear from you!</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="contact-main">
+    <div class="contact-grid">
+      <!-- Email Card -->
+      <div class="contact-card">
+        <div class="contact-card-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h3>Email Us</h3>
+        <p>Send us an email with your questions, feedback, or concerns.</p>
+      </div>
+
+      <!-- Location Card -->
+      <div class="contact-card">
+        <div class="contact-card-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <h3>Visit Our Office</h3>
+        <p>Stop by our office in the Erb Memorial Union (EMU).</p>
+        <p><strong>EMU Room 004</strong><br>University of Oregon<br>Eugene, OR 97403</p>
+      </div>
+
+      <!-- Social Media Card -->
+      <div class="contact-card">
+        <div class="contact-card-icon">
+          <i class="fas fa-share-alt"></i>
+        </div>
+        <h3>Connect With Us</h3>
+        <p>Follow us on social media to stay updated on events and news.</p>
+        <p>
+          <a href="https://www.instagram.com/asuogov" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i> @asuogov
+          </a>
+        </p>
+        <p>
+          <a href="https://www.linkedin.com/company/asuo/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i> ASUO on LinkedIn
+          </a>
+        </p>
+      </div>
+
+      <!-- Meet Officers Card -->
+      <div class="contact-card">
+        <div class="contact-card-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3>Meet Our Officers</h3>
+        <p>Get to know the ASUO leadership team and their roles.</p>
+        <p><a href="our-directors.html">Meet the Officers</a></p>
+      </div>
+    </div>
+
+    <!-- Office Hours Card -->
+    <div class="office-hours-card">
+      <h2>Office Hours</h2>
+      <p>Meet with ASUO leadership and get your questions answered</p>
+      <a href="https://docs.google.com/spreadsheets/d/1Lv6Qag_fVtIpUmC_kAx1WdnGxP1y3bTJKApPuUYavok/edit?gid=1375568540#gid=1375568540" target="_blank" rel="noopener noreferrer" class="btn-office-hours">
+        <i class="fas fa-calendar-alt"></i>
+        View Office Hours
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="global-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Questions? We're here to help!</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> EMU Room 004</p>
+            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/asuogov" target="_blank">@asuogov</a></p>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="our-directors.html">Meet Officers</a></li>
+            <li><a href="index.html#events">Events</a></li>
+            <li><a href="passed-resolutions.html">Resolutions</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="https://docs.google.com/spreadsheets/d/1Lv6Qag_fVtIpUmC_kAx1WdnGxP1y3bTJKApPuUYavok/edit?gid=1375568540#gid=1375568540" target="_blank">Office Hours</a></li>
+            <li><a href="sges.html">SGES</a></li>
+            <li><a href="https://uoregon.joinhandshake.com/job-search/10112227?query=ASUO&per_page=25&sort=relevance&page=1" target="_blank">Handshake</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Associated Students of the University of Oregon (ASUO)</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
