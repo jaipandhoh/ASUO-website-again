@@ -3,30 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Non-Traditional Students - ASUO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Non-Traditional Student | ASUO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="index.css">
-  <script src="index.js"></script>
 </head>
 <body>
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="index.html" class="logo">
-        <img src="./2024-ASUO-Seal-BLK.png" alt="ASUO Logo" style="height: 40px; margin-right: 10px;">
+      <a href="/" class="logo">
+        <img src="./2024-ASUO-Seal-BLK.png" alt="ASUO Logo" style="height: 35px; vertical-align: middle; margin-right: 0.1rem; margin-top: -4px;">
         ASUO
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#events">Events</a></li>
-        <li><a href="index.html#calendar">Calendar</a></li>
-        <li><a href="passed-resolutions.html">Passed Resolutions</a></li>
+        <li class="dropdown">
+          <div class="dropdown-toggle">
+            About <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="dropdown-menu">
+            <a href="index.html#i-fee">About Us</a>
+            <a href="our-directors.html">Meet Officers</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <div class="dropdown-toggle">
+            Get Involved <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="dropdown-menu">
+            <a href="index.html#events">Events</a>
+            <a href="index.html#calendar">Calendar</a>
+            <a href="https://uoregon.joinhandshake.com/job-search/10112227?query=ASUO&per_page=25&sort=relevance&page=1" target="_blank">Apply on Handshake</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <div class="dropdown-toggle">
+            Branches <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="dropdown-menu">
+            <a href="passed-resolutions.html">Passed Resolutions</a>
+          </div>
+        </li>
         <li><a href="index.html#contact">Contact</a></li>
         <li><a href="sges.html">SGES</a></li>
         <li class="dropdown">
           <div class="dropdown-toggle">
-            I am a <i class="fas fa-chevron-down"></i>
+            I am: <i class="fas fa-chevron-down"></i>
           </div>
           <div class="dropdown-menu">
             <div class="dropdown-submenu">
@@ -35,16 +57,23 @@
               </div>
               <div class="dropdown-submenu-content">
                 <a href="undergraduate.html">Undergraduate</a>
-                <a href="graduate-student.html">Graduate Student</a>
-                <a href="first-year-student.html">First-Year Student</a>
-                <a href="transfer-student.html">Transfer Student</a>
-                <a href="international-student.html">International Student</a>
-                <a href="non-traditional-student.html">Non-Traditional Student</a>
-                <a href="veteran-student.html">Veteran Student</a>
+                <a href="graduate-student.html">Graduate</a>
+                <a href="first-year-student.html">First Year</a>
               </div>
             </div>
-            <a href="https://sges.uoregon.edu/benefits" target="_blank">Student Parent</a>
+            <a href="index.html#student-worker">Student Worker</a>
+            <div class="dropdown-submenu">
+              <div class="dropdown-submenu-toggle">
+                Non-Traditional Student <i class="fas fa-chevron-right"></i>
+              </div>
+              <div class="dropdown-submenu-content">
+                <a href="veteran-student.html">Veteran</a>
+                <a href="international-student.html">International</a>
+                <a href="transfer-student.html">Transfer</a>
+              </div>
+            </div>
             <a href="alumni.html">Alumni</a>
+            <a href="https://sges.uoregon.edu/benefits" target="_blank">Student Parent</a>
             <a href="current-officer.html">Current Officer</a>
           </div>
         </li>
@@ -54,178 +83,177 @@
 
   <!-- Main Content -->
   <main class="main-content">
-    <div class="section">
+    <!-- Header Blurb -->
+    <section class="iam-header">
       <div class="section-header">
-        <h1 class="section-title">Welcome, Non-Traditional Students!</h1>
-        <p class="section-subtitle">Your guide to success at the University of Oregon as a non-traditional student through ASUO resources and support.</p>
+        <h1 class="section-title">Non-Traditional Student</h1>
+        <p class="section-subtitle">We recognize that every student's path to and at UO is unique. ASUO is committed to supporting students from diverse backgrounds and experiences. Find resources tailored to your journey.</p>
       </div>
+    </section>
 
-      <div class="content-section">
-        <h2>🎓 Non-Traditional Student Support</h2>
-        <p>Welcome to the University of Oregon! As a non-traditional student, you bring valuable life experience, maturity, and diverse perspectives to our campus community. ASUO is committed to supporting your unique needs and ensuring you feel welcome and valued.</p>
-        
-        <h3>Getting Started at UO</h3>
+    <!-- Resource Sections -->
+    <section class="resource-sections">
+      <div class="resource-accordion">
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <h3>Transfer Students</h3>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="resource-section-header">
+              <h4>Transfer Student Support</h4>
+              <p>Resources and services specifically designed for transfer students</p>
+            </div>
+            <div class="resource-links">
+              <a href="https://registrar.uoregon.edu/faculty-staff/grades/transfer-student-support" target="_blank" class="resource-link">
+                <i class="fas fa-exchange-alt"></i>
+                <div>
+                  <h4>Transfer Student Resources</h4>
+                  <p>Support services and resources for transfer students</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
 
-        <ul>
-          <li><strong>Non-Traditional Student Orientation:</strong> Participate in orientation programs designed for non-traditional students</li>
-          <li><strong>Academic Advising:</strong> Work with advisors familiar with non-traditional student needs</li>
-          <li><strong>Credit for Life Experience:</strong> Information about receiving academic credit for prior learning</li>
-          <li><strong>Campus Resources:</strong> Learn about UO-specific resources and services</li>
-        </ul>
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <h3>International Students</h3>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="resource-section-header">
+              <h4>International Student Services</h4>
+              <p>Comprehensive support for international students at UO</p>
+            </div>
+            <div class="resource-links">
+              <a href="https://isss.uoregon.edu/" target="_blank" class="resource-link">
+                <i class="fas fa-globe"></i>
+                <div>
+                  <h4>International Students</h4>
+                  <p>Comprehensive support for international students</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
 
-        <h3>Academic Support</h3>
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <h3>First-Generation Students</h3>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="resource-section-header">
+              <h4>First-Gen Support Programs</h4>
+              <p>Specialized resources and community for first-generation college students</p>
+            </div>
+            <div class="resource-links">
+              <a href="https://blogs.uoregon.edu/firstgen/" target="_blank" class="resource-link">
+                <i class="fas fa-star"></i>
+                <div>
+                  <h4>First-Gen Support</h4>
+                  <p>Resources and community for first-generation students</p>
+                </div>
+              </a>
+              <a href="https://triosss.uoregon.edu/" target="_blank" class="resource-link">
+                <i class="fas fa-users"></i>
+                <div>
+                  <h4>TRIO Programs</h4>
+                  <p>Student Support Services and TRIO programs</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
 
-        <ul>
-          <li><strong>Study Strategies:</strong> Adapt your life experience to academic study methods</li>
-          <li><strong>Time Management:</strong> Balance academic responsibilities with work, family, and personal commitments</li>
-          <li><strong>Technology Support:</strong> Access to technology training and support services</li>
-          <li><strong>Research Opportunities:</strong> Explore undergraduate research opportunities</li>
-        </ul>
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <h3>Veteran Students</h3>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="resource-section-header">
+              <h4>Veteran Support Services</h4>
+              <p>Comprehensive resources and support for student veterans</p>
+            </div>
+            <div class="resource-links">
+              <a href="https://dos.uoregon.edu/student-veterans-center" target="_blank" class="resource-link">
+                <i class="fas fa-medal"></i>
+                <div>
+                  <h4>Student Veterans Center</h4>
+                  <p>Support and resources for student veterans</p>
+                </div>
+              </a>
+              <a href="https://dos.uoregon.edu/veterans" target="_blank" class="resource-link">
+                <i class="fas fa-flag"></i>
+                <div>
+                  <h4>Veterans Service</h4>
+                  <p>Veterans benefits and services</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="content-section">
-        <h2>🏠 Housing and Living</h2>
-        <p>Find your place at UO with resources for non-traditional student housing and community:</p>
-        
-        <h3>Housing Options</h3>
-
-        <ul>
-          <li><strong>Off-Campus Housing:</strong> Resources for finding suitable off-campus housing</li>
-          <li><strong>Family Housing:</strong> Information about family-friendly housing options</li>
-          <li><strong>Commuter Resources:</strong> Support for students living off-campus</li>
-          <li><strong>Housing Rights:</strong> Information about tenant rights and responsibilities</li>
-        </ul>
-
-        <h3>Community Building</h3>
-
-        <ul>
-          <li><strong>Non-Traditional Student Groups:</strong> Join organizations specifically for non-traditional students</li>
-          <li><strong>Peer Mentorship:</strong> Connect with other non-traditional students for support</li>
-          <li><strong>Family Support:</strong> Resources for non-traditional students with families</li>
-          <li><strong>Social Events:</strong> Participate in non-traditional student social activities</li>
-        </ul>
+    <!-- Contact CTA -->
+    <section class="contact-cta">
+      <div class="cta-content">
+        <h2>Need More Help?</h2>
+        <p>Can't find what you're looking for? Our team is here to help you navigate campus resources and connect you with the right support.</p>
+        <div class="cta-buttons">
+          <a href="mailto:asuo@uoregon.edu" class="btn btn-primary">
+            <i class="fas fa-envelope"></i>
+            Email Us
+          </a>
+          <a href="https://docs.google.com/spreadsheets/d/1Lv6Qag_fVtIpUmC_kAx1WdnGxP1y3bTJKApPuUYavok/edit?gid=1375568540#gid=1375568540" target="_blank" class="btn btn-outline">
+            <i class="fas fa-clock"></i>
+            Office Hours
+          </a>
+        </div>
       </div>
-
-      <div class="content-section">
-        <h2>💰 Financial Resources</h2>
-        <p>ASUO provides financial support and resources for non-traditional students:</p>
-        
-        <h3>Financial Aid and Support</h3>
-
-        <ul>
-          <li><strong>Non-Traditional Student Scholarships:</strong> Apply for scholarships specifically for non-traditional students</li>
-          <li><strong>Financial Aid:</strong> Understand financial aid options for non-traditional students</li>
-          <li><strong>Emergency Funding:</strong> Access emergency financial assistance when needed</li>
-          <li><strong>Work-Study:</strong> Explore work-study opportunities on campus</li>
-        </ul>
-
-        <h3>Cost Management</h3>
-
-        <ul>
-          <li><strong>Budget Planning:</strong> Create a budget for your time at UO</li>
-          <li><strong>Textbook Resources:</strong> Find affordable textbook options and rentals</li>
-          <li><strong>Transportation:</strong> Learn about campus transportation and parking options</li>
-          <li><strong>Food Resources:</strong> Access campus dining and food security resources</li>
-        </ul>
-      </div>
-
-      <div class="content-section">
-        <h2>👥 Getting Involved</h2>
-        <p>Build connections and find your community as a non-traditional student:</p>
-        
-        <h3>Student Organizations</h3>
-
-        <ul>
-          <li><strong>Non-Traditional Student Association:</strong> Join the official non-traditional student organization</li>
-          <li><strong>Academic Clubs:</strong> Connect with students in your major or field of study</li>
-          <li><strong>Cultural Organizations:</strong> Find communities that share your cultural background</li>
-          <li><strong>Recreation Groups:</strong> Join intramural sports, outdoor clubs, or fitness groups</li>
-        </ul>
-
-        <h3>Leadership Opportunities</h3>
-
-        <ul>
-          <li><strong>ASUO Involvement:</strong> Get involved with student government and advocacy</li>
-          <li><strong>Peer Mentoring:</strong> Become a mentor for other non-traditional students</li>
-          <li><strong>Event Planning:</strong> Help organize non-traditional student events and activities</li>
-          <li><strong>Community Service:</strong> Participate in volunteer opportunities and service learning</li>
-        </ul>
-      </div>
-
-      <div class="content-section">
-        <h2>🎯 Academic and Career Planning</h2>
-        <p>Make the most of your time at UO with focused academic and career planning:</p>
-        
-        <h3>Academic Planning</h3>
-
-        <ul>
-          <li><strong>Degree Completion:</strong> Plan your path to degree completion efficiently</li>
-          <li><strong>Course Selection:</strong> Choose courses that align with your goals and schedule</li>
-          <li><strong>Research Opportunities:</strong> Engage in undergraduate research in your field</li>
-          <li><strong>Study Abroad:</strong> Explore study abroad opportunities if time permits</li>
-        </ul>
-
-        <h3>Career Development</h3>
-
-        <ul>
-          <li><strong>Career Services:</strong> Access UO's career services and job placement resources</li>
-          <li><strong>Internship Opportunities:</strong> Find internships relevant to your field of study</li>
-          <li><strong>Networking Events:</strong> Attend career fairs and networking events</li>
-          <li><strong>Graduate School Preparation:</strong> Resources for those considering graduate school</li>
-        </ul>
-      </div>
-
-      <div class="content-section">
-        <h2>🏥 Health and Wellness</h2>
-        <p>Take care of your physical and mental health as a non-traditional student:</p>
-        
-        <h3>Physical Health</h3>
-
-        <ul>
-          <li><strong>Student Health Center:</strong> Access to healthcare services on campus</li>
-          <li><strong>Recreation Center:</strong> Use the Student Recreation Center for fitness and wellness</li>
-          <li><strong>Intramural Sports:</strong> Participate in recreational sports and activities</li>
-          <li><strong>Wellness Programs:</strong> Learn about healthy lifestyle choices and habits</li>
-        </ul>
-
-        <h3>Mental Health and Support</h3>
-
-        <ul>
-          <li><strong>Counseling Services:</strong> Access to mental health counseling and support</li>
-          <li><strong>Stress Management:</strong> Resources for managing academic and personal stress</li>
-          <li><strong>Peer Support:</strong> Connect with peer mentors and support groups</li>
-          <li><strong>Crisis Resources:</strong> Know where to turn in times of crisis or emergency</li>
-        </ul>
-      </div>
-
-      <div class="content-section">
-        <h2>📞 Get Connected</h2>
-        <p>Ready to get started as a non-traditional student? Here's how to connect with ASUO and campus resources:</p>
-        
-        <h3>Contact Information</h3>
-
-        <ul>
-          <li><strong>ASUO Office:</strong> EMU Suite 4, 1395 University Street</li>
-          <li><strong>Phone:</strong> (541) 346-3724</li>
-          <li><strong>Email:</strong> asuo@uoregon.edu</li>
-          <li><strong>Non-Traditional Student Liaison:</strong> Contact our non-traditional student representative</li>
-        </ul>
-
-        <h3>Stay Updated</h3>
-
-        <ul>
-          <li><strong>Non-Traditional Student Newsletter:</strong> Subscribe to non-traditional student updates</li>
-          <li><strong>Social Media:</strong> Follow ASUO for campus news, events, and resources</li>
-          <li><strong>Campus Events:</strong> Check the campus calendar for upcoming events and activities</li>
-          <li><strong>Peer Mentors:</strong> Connect with other non-traditional students for support</li>
-        </ul>
-      </div>
-    </div>
+    </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2024 Associated Students of the University of Oregon. All rights reserved.</p>
+  <!-- Global Footer -->
+  <footer class="global-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Questions? We're here to help!</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> <a href="mailto:asuo@uoregon.edu">asuo@uoregon.edu</a></p>
+            <p><i class="fas fa-map-marker-alt"></i> EMU Room 004</p>
+            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/asuogov" target="_blank">@asuogov</a></p>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#i-fee">About Us</a></li>
+            <li><a href="our-directors.html">Meet Officers</a></li>
+            <li><a href="index.html#events">Events</a></li>
+            <li><a href="passed-resolutions.html">Resolutions</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="https://docs.google.com/spreadsheets/d/1Lv6Qag_fVtIpUmC_kAx1WdnGxP1y3bTJKApPuUYavok/edit?gid=1375568540#gid=1375568540" target="_blank">Office Hours</a></li>
+            <li><a href="sges.html">SGES</a></li>
+            <li><a href="https://uoregon.joinhandshake.com/job-search/10112227?query=ASUO&per_page=25&sort=relevance&page=1" target="_blank">Handshake</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Associated Students of the University of Oregon (ASUO)</p>
+      </div>
+    </div>
   </footer>
+
+  <script src="index.js"></script>
+  <script src="iam-pages.js"></script>
 </body>
 </html>
