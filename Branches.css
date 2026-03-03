@@ -79,6 +79,100 @@ strong {
   font-weight: 600;
 }
 
+/* Minutes Section */
+.minutes-section {
+  margin-top: 2.5rem;
+}
+
+.section-header.compact {
+  margin-bottom: 1.5rem;
+}
+
+.minutes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.minutes-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.minutes-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(15, 76, 58, 0.2);
+}
+
+.minutes-card-header h3 {
+  margin: 0.5rem 0 0.25rem 0;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.minutes-meta {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.minutes-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(15, 76, 58, 0.12);
+  color: var(--primary);
+}
+
+.minutes-badge.neutral {
+  background: rgba(113, 128, 150, 0.12);
+  color: var(--text-secondary);
+}
+
+.minutes-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.minutes-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.55rem 0.85rem;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.minutes-link:hover {
+  background: var(--primary-light);
+  transform: translateY(-1px);
+}
+
+.minutes-link.secondary {
+  background: var(--surface-alt);
+  color: var(--primary);
+  border: 1px solid var(--border);
+}
+
+.minutes-link.secondary:hover {
+  background: #eef2f7;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   body {
